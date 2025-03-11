@@ -267,7 +267,7 @@ starexx = """
 
         async function fetchIcons() {
             try {
-                let response = await fetch("https://raw.githubusercontent.com/starexxx/starexxx/refs/heads/main/app.json");
+                let response = await fetch("https://raw.githubusercontent.com/starexxx/IDItems/8ca734d3d9cb178ce265b5906db6002323f970b8/assets/app.json");
                 let data = await response.json();
                 
                 iconsData = data.map(item => ({

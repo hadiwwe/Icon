@@ -356,8 +356,7 @@ def home():
 
 @app.route("/script")
 def script_redirect():
-    current_url = request.url_root.strip("/")
-    return redirect(f"view-source:{current_url}")
+    return redirect(f"view-source:https://item-starexx.vercel.app/")
 
 @app.errorhandler(404)
 def page_not_found(e):

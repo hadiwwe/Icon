@@ -354,13 +354,9 @@ starexx = """
 def home():
     return render_template_string(starexx)
 
-@app.route("/script")
-def script_redirect():
-    return redirect(f"view-source:https://item-starexx.vercel.app/")
-
 @app.errorhandler(404)
 def page_not_found(e):
     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    app.run(debug=True, port=50000)
+    app.run(debug=True)

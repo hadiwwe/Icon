@@ -1,40 +1,56 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ""
-labels: ""
+name: Bug Report
+about: Report an issue to help us improve
+title: "[BUG] "
+labels: "bug"
 assignees: ""
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### **Describe the Bug**
+A clear and concise description of the issue. What is the problem, and what are you trying to achieve?
 
-**To Reproduce**
-Steps to reproduce the behavior:
+---
 
+### **Steps to Reproduce**
 1. Go to '...'
 2. Click on '....'
-3. Scroll down to '....'
-4. See error
+3. Scroll to '....'
+4. Observe the error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+---
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### **Expected Behavior**
+What did you expect to happen? Be as specific as possible.
 
-**Desktop (please complete the following information):**
+---
 
-- OS: [e.g. iOS]
-- Browser [e.g. chrome, safari]
-- Version [e.g. 22]
+### **Actual Behavior**
+What actually happened? Describe the unexpected behavior or error.
 
-**Smartphone (please complete the following information):**
+---
 
-- Device: [e.g. iPhone6]
-- OS: [e.g. iOS8.1]
-- Browser [e.g. stock browser, safari]
-- Version [e.g. 22]
+### **Screenshots or Screen Recordings**
+If applicable, add screenshots or screen recordings to help explain the issue.
 
-**Additional context**
-Add any other context about the problem here.
+---
+
+### **Environment**
+#### **Desktop**
+- **OS:** [e.g., Windows 11, macOS Ventura]
+- **Browser:** [e.g., Chrome, Firefox, Safari]
+- **Version:** [e.g., 122.0.1]
+
+#### **Smartphone**
+- **Device:** [e.g., iPhone 15, Samsung Galaxy S23]
+- **OS:** [e.g., iOS 17, Android 14]
+- **Browser:** [e.g., Chrome, Safari]
+- **Version:** [e.g., 122.0.1]
+
+---
+
+### **Additional Context**
+Add any other relevant information about the issue:
+- When did the issue first occur?
+- Does it happen consistently or intermittently?
+- Are there any error messages or logs? If yes, please share them.
+- Any recent changes or updates that might be related?

@@ -29,14 +29,5 @@
 	</details>
 </details>  
 
-## Installation  
-Follow these steps to set up and run the project:  
-```sh
-git clone https://github.com/starexxx/FFItems.git
-cd FFItems
-pip install -r requirements.txt
-python app.py
-```
-
 # License
 This project is released under the [MIT License](LICENSE)

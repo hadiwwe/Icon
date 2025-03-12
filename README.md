@@ -15,6 +15,7 @@
 			<tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/app.py">app.py</a></b></td></tr>
 			<tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/vercel.json">vercel.json</a></b></td></tr>
 			<tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/assets/">assets/</a></b></td></tr>
+	                <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/index.html/">index.html/</a></b></td></tr>
 			</table>
 		</blockquote>
 		<details>

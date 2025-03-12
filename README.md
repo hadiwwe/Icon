@@ -9,26 +9,24 @@ Free Fire Items is a web-based interface! By **Starexx**
 		<blockquote>
 			<table>
 			<tr><td><b><a href="#">README.md</a></b></td></tr>
-                        <tr><td><b><a href="#">LICENSE</a></b></td></tr>
+			<tr><td><b><a href="#">LICENSE</a></b></td></tr>
 			<tr><td><b><a href="#">requirements.txt</a></b></td></tr>
 			<tr><td><b><a href="#">app.py</a></b></td></tr>
-	                <tr><td><b><a href="#">vercel.json</a></b></td></tr>
+			<tr><td><b><a href="#">vercel.json</a></b></td></tr>
+			<tr><td><b><a href="#">assets/</a></b></td></tr>
 			</table>
 		</blockquote>
-	</details>
-	<details>
-		<summary><b>assets</b></summary>
-					<table>
-					<tr><td><b><a href="#">error-404.png</a></b></td></tr>
-					<tr><td><b><a href="#">og.png</a></b></td></tr>
-                                        <tr><td><b><a href="#">app.json</a></b></td></tr>
-				        <tr><td><b><a href="#">header.png</a></b></td></tr>
-					</table>
-				</blockquote>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
+		<details>
+			<summary><b>assets</b></summary>
+			<blockquote>
+				<table>
+				<tr><td><b><a href="#">error-404.png</a></b></td></tr>
+				<tr><td><b><a href="#">og.png</a></b></td></tr>
+				<tr><td><b><a href="#">app.json</a></b></td></tr>
+				<tr><td><b><a href="#">header.png</a></b></td></tr>
+				</table>
+			</blockquote>
+		</details>
 	</details>
 </details>
 

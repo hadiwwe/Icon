@@ -13,6 +13,7 @@ Free Fire Items UI ek web-based interface hai jo Free Fire ke different in-game 
       <tr><td><b><a href="#">LICENSE</a></b></td></tr>
 			<tr><td><b><a href="#">requirements.txt</a></b></td></tr>
 			<tr><td><b><a href="#">app.py</a></b></td></tr>
+	                <tr><td><b><a href="#">vercel.json</a></b></td></tr>
 			</table>
 		</blockquote>
 	</details>
@@ -21,7 +22,8 @@ Free Fire Items UI ek web-based interface hai jo Free Fire ke different in-game 
 					<table>
 					<tr><td><b><a href="#">error-404.png</a></b></td></tr>
 					<tr><td><b><a href="#">og.png</a></b></td></tr>
-          <tr><td><b><a href="#">app.json</a></b></td></tr>
+                                        <tr><td><b><a href="#">app.json</a></b></td></tr>
+				        <tr><td><b><a href="#">header.png</a></b></td></tr>
 					</table>
 				</blockquote>
 					</table>

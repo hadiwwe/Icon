@@ -9,7 +9,7 @@ Free Fire Items is a web-based interface! By **Starexx**
 		<blockquote>
 			<table>
 			<tr><td><b><a href="#">README.md</a></b></td></tr>
-      <tr><td><b><a href="#">LICENSE</a></b></td></tr>
+                        <tr><td><b><a href="#">LICENSE</a></b></td></tr>
 			<tr><td><b><a href="#">requirements.txt</a></b></td></tr>
 			<tr><td><b><a href="#">app.py</a></b></td></tr>
 	                <tr><td><b><a href="#">vercel.json</a></b></td></tr>

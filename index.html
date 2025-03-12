@@ -1,7 +1,3 @@
-from flask import Flask, render_template_string, redirect, url_for, request
-app = Flask(__name__)
-
-starexx = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -381,16 +377,3 @@ starexx = """
     </script>
 </body>
 </html>
-"""
-
-@app.route("/")
-def home():
-    return render_template_string(starexx)
-  
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return redirect(url_for("home"))
-
-if __name__ == "__main__":
-    app.run(debug=True)

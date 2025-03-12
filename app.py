@@ -328,7 +328,7 @@ starexx = """
             visibleIcons.forEach(icon => {
                 let card = document.createElement("div");
                 card.classList.add("icon-card");
-                card.innerHTML = `<img src="${icon.imageUrl}" onerror="this.src='https://raw.githubusercontent.com/starexxx/starexxx/347d6405a9cdfc898837b91333f6bd5b0fb27257/error-404.png'" onclick="showModal('${icon.name}', '${icon.itemId}', '${icon.iconName}', '${icon.imageUrl}')">`;
+                card.innerHTML = `<img src="${icon.imageUrl}" onerror="this.src='https://raw.githubusercontent.com/starexxx/IDItems/b8295c7bda85f3fadb7112ede8aa56b1e2d99680/assets/error-404.png'" onclick="showModal('${icon.name}', '${icon.itemId}', '${icon.iconName}', '${icon.imageUrl}')">`;
                 grid.appendChild(card);
             });
 

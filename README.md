@@ -8,22 +8,22 @@ Free Fire Items is a web-based interface! By **Starexx**
 		<summary><b>root</b></summary>
 		<blockquote>
 			<table>
-			<tr><td><b><a href="#">README.md</a></b></td></tr>
-			<tr><td><b><a href="#">LICENSE</a></b></td></tr>
-			<tr><td><b><a href="#">requirements.txt</a></b></td></tr>
-			<tr><td><b><a href="#">app.py</a></b></td></tr>
-			<tr><td><b><a href="#">vercel.json</a></b></td></tr>
-			<tr><td><b><a href="#">assets/</a></b></td></tr>
+			<tr><td><b><a href="https://github.com/starexxx/FFItems/README.md">README.md</a></b></td></tr>
+			<tr><td><b><a href="https://github.com/starexxx/FFItems/LICENSE">LICENSE</a></b></td></tr>
+			<tr><td><b><a href="https://github.com/starexxx/FFItems/requirements.txt">requirements.txt</a></b></td></tr>
+			<tr><td><b><a href="https://github.com/starexxx/FFItems/app.py">app.py</a></b></td></tr>
+			<tr><td><b><a href="https://github.com/starexxx/FFItems/vercel.json">vercel.json</a></b></td></tr>
+			<tr><td><b><a href="https://github.com/starexxx/FFItems/assets/">assets/</a></b></td></tr>
 			</table>
 		</blockquote>
 		<details>
 			<summary><b>assets</b></summary>
 			<blockquote>
 				<table>
-				<tr><td><b><a href="#">error-404.png</a></b></td></tr>
-				<tr><td><b><a href="#">og.png</a></b></td></tr>
-				<tr><td><b><a href="#">app.json</a></b></td></tr>
-				<tr><td><b><a href="#">header.png</a></b></td></tr>
+				<tr><td><b><a href="https://github.com/starexxx/FFItems/assets/error-404.png">error-404.png</a></b></td></tr>
+				<tr><td><b><a href="https://github.com/starexxx/FFItems/assets/og.png">og.png</a></b></td></tr>
+				<tr><td><b><a href="https://github.com/starexxx/FFItems/assets/app.json">app.json</a></b></td></tr>
+				<tr><td><b><a href="https://github.com/starexxx/FFItems/assets/header.png">header.png</a></b></td></tr>
 				</table>
 			</blockquote>
 		</details>

@@ -2,7 +2,7 @@
 **Free Fire Items** is a web-based interface developed by **Starexx**.  
 **Last Commit**: Wednesday, 12 March 2025
 
-## Project Index  
+### Project Index  
 <details open>
 	<summary><b>Free Fire Items</b></summary>
 	<details>
@@ -29,5 +29,5 @@
 	</details>
 </details>  
 
-# License
+### License
 This project is released under the [MIT License](LICENSE)

@@ -3,7 +3,7 @@ Free Fire Items is a web-based interface! By **Starexx**
 
 ## Project Index
 <details open>
-	<summary><b>Free Fire Items/</b></summary>
+	<summary><b>Free Fire Items</b></summary>
 	<details>
 		<summary><b>root</b></summary>
 		<blockquote>
@@ -17,7 +17,7 @@ Free Fire Items is a web-based interface! By **Starexx**
 		</blockquote>
 	</details>
 	<details>
-		<summary><b>assets/</b></summary>
+		<summary><b>assets</b></summary>
 					<table>
 					<tr><td><b><a href="#">error-404.png</a></b></td></tr>
 					<tr><td><b><a href="#">og.png</a></b></td></tr>

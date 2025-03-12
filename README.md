@@ -1,6 +1,5 @@
-# FreeFire Items
-
-Free Fire Items UI ek web-based interface hai jo Free Fire ke different in-game items ko visualize karta hai.
+# Free Fire Items
+Free Fire Items is a web-based interface! By **Starexx**
 
 ## Project Index
 <details open>

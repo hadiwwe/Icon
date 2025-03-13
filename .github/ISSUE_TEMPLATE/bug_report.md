@@ -6,12 +6,12 @@ labels: "bug"
 assignees: ""
 ---
 
-### **Describe the Bug**
+### Describe the Bug
 A clear and concise description of the issue. What is the problem, and what are you trying to achieve?
 
 ---
 
-### **Steps to Reproduce**
+### Steps to Reproduce
 1. Go to '...'
 2. Click on '....'
 3. Scroll to '....'
@@ -19,28 +19,28 @@ A clear and concise description of the issue. What is the problem, and what are 
 
 ---
 
-### **Expected Behavior**
+### Expected Behavior
 What did you expect to happen? Be as specific as possible.
 
 ---
 
-### **Actual Behavior**
+### Actual Behavior
 What actually happened? Describe the unexpected behavior or error.
 
 ---
 
-### **Screenshots or Screen Recordings**
+### Screenshots or Screen Recordings
 If applicable, add screenshots or screen recordings to help explain the issue.
 
 ---
 
-### **Environment**
+### Environment
 #### **Desktop**
 - **OS:** [e.g., Windows 11, macOS Ventura]
 - **Browser:** [e.g., Chrome, Firefox, Safari]
 - **Version:** [e.g., 122.0.1]
 
-#### **Smartphone**
+#### Smartphone
 - **Device:** [e.g., iPhone 15, Samsung Galaxy S23]
 - **OS:** [e.g., iOS 17, Android 14]
 - **Browser:** [e.g., Chrome, Safari]
@@ -48,7 +48,7 @@ If applicable, add screenshots or screen recordings to help explain the issue.
 
 ---
 
-### **Additional Context**
+### Additional Context
 Add any other relevant information about the issue:
 - When did the issue first occur?
 - Does it happen consistently or intermittently?

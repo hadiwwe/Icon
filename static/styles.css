@@ -201,7 +201,7 @@ textarea {
     resize: none;
     padding-right: 50px;
     transition: all 0.3s;
-    text-align: left;
+    text-align: center;
 }
 
 textarea:focus {

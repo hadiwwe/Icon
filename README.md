@@ -1,6 +1,5 @@
 # Free Fire Items  
-Free Fire Items is a web-based interface developed by **Starexx**.  
-**Last Update**: Wednesday, 12 March 2025
+Free Fire Items is a web-based interface developed by **Starexx**
 
 ## Project Index  
 <details open>

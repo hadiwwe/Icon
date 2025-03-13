@@ -10,8 +10,8 @@
     --modal-content-background: transparent;
     --button-active-background: #fff;
     --button-active-text: #000;
-    --spinner-color: rgba(255, 255, 255, 0.1);
-    --spinner-top-color: #fff;
+    --spinner-color: #121212;
+    --spinner-top-color: white;
     --font-family: 'Inter', sans-serif;
     --font-size-base: 14px;
     --font-size-large: 24px;
@@ -43,10 +43,10 @@ body {
 
 .header img {
     width: 40%;
-    max-width: 3400px;
+    max-width: 80%;
     height: auto;
     max-height: 700px;
-    margin-left: 110px;
+    margin-left: auto;
     margin-top: var(--spacing-small);
 }
 
@@ -73,6 +73,8 @@ body {
     cursor: pointer;
     border: 1px solid var(--card-border);
     transition: transform var(--transition-speed) ease, background var(--transition-speed) ease;
+    width: auto;
+    height: 70px;
 }
 
 .icon-card:hover {
@@ -82,9 +84,14 @@ body {
 
 .icon-card img {
     width: 30px;
-    max-width: 30px;
-    height: auto;
+    height: 30px;
     border-radius: var(--border-radius-small);
+    animation: iconLoad 0.5s ease-in-out;
+}
+
+@keyframes iconLoad {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .pagination-container {
@@ -164,7 +171,7 @@ body {
 
 .modal img {
     width: 100px;
-    height: auto;
+    height: 100px;
     margin-bottom: var(--spacing-medium);
     border-radius: 0px;
     user-select: none;
@@ -199,7 +206,7 @@ textarea {
     font-size: 12.5px;
     height: 45px;
     resize: none;
-    padding-right: 50px;
+    padding-right: auto;
     transition: all 0.3s;
     text-align: left;
 }
@@ -224,7 +231,7 @@ textarea:focus {
     border-top: 4px solid var(--spinner-top-color);
     width: 25px;
     height: 25px;
-    animation: spin 0.5s linear infinite;
+    animation: spin 0.4s linear infinite;
 }
 
 @keyframes spin {
@@ -235,4 +242,15 @@ textarea:focus {
 ::selection {
     background-color: #181818;
     color: var(--text-color);
+}
+
+.lazy-load {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }

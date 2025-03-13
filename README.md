@@ -12,7 +12,7 @@ Free Fire Items is a web-based interface developed by **Starexx**.
                 <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/README.md">README.md</a></b></td></tr>
                 <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/LICENSE">LICENSE</a></b></td></tr>
                 <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/assets/">assets/</a></b></td></tr>
-                <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/static/">static/</a></b></td></tr>
+                <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/src/">src/</a></b></td></tr>
                 <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/index.html">index.html</a></b></td></tr>
             </table>
         </blockquote>
@@ -31,8 +31,8 @@ Free Fire Items is a web-based interface developed by **Starexx**.
             <summary><b>static</b></summary>
             <blockquote>
                 <table>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/static/styles.css">styles.css</a></b></td></tr>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/static/script.js">script.js</a></b></td></tr>
+                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/styles.css">styles.css</a></b></td></tr>
+                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/script.js">script.js</a></b></td></tr>
                 </table>
             </blockquote>
         </details>

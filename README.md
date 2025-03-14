@@ -14,10 +14,10 @@
 ## Project Structure
 
 ```sh
-└─ FFItems
+╰─ FFItems
      ├─ .github
-     │  └─ ISSUE_TEMPLATE
-     │     └─ bug_report.md
+     │   ╰─ ISSUE_TEMPLATE
+     │     ╰─ bug_report.md
      ├─ CONTRIBUTING.md
      ├─ LICENSE
      ├─ README.md
@@ -25,11 +25,11 @@
      │  ├─ app.json
      │  ├─ error-404.png
      │  ├─ header.png
-     │  └─ og.png
+     │  ╰─ og.png
      ├─ index.html
-     └─ src
+     ╰─ src
          ├─ script.js
-         └─ styles.css
+         ╰─ styles.css
 ```
 
 ## Project Index

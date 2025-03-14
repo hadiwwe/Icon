@@ -46,7 +46,7 @@ function renderIcons() {
         card.innerHTML = `
             <img src="${icon.imageUrl}" 
                  onerror="this.src='assets/error-404.png'" 
-                 onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}, '${icon.imageUrl}')')">
+                 onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}, '${icon.imageUrl}')">
         `;
         grid.appendChild(card);
     });

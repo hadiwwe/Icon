@@ -1,6 +1,26 @@
 # Free Fire Items  
 Free Fire Items is a web-based interface developed by **Starexx**
 
+## Project Structure
+```
+FFItems
+├─ .github
+│  └─ ISSUE_TEMPLATE
+│     └─ bug_report.md
+├─ CONTRIBUTING.md
+├─ LICENSE
+├─ README.md
+├─ assets
+│  ├─ app.json
+│  ├─ error-404.png
+│  ├─ header.png
+│  └─ og.png
+├─ index.html
+└─ src
+   ├─ script.js
+   └─ styles.css
+```
+
 ## Project Index  
 <details open>
     <summary><b>Free Fire Items</b></summary>

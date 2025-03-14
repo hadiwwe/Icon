@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchIcons() {
     try {
-        const response = await fetch("https://raw.githubusercontent.com/starexxx/starexxx/refs/heads/main/app.json");
+        const response = await fetch("assets/app.json");
         const data = await response.json();
 
         iconsData = data.map(item => ({
@@ -45,7 +45,7 @@ function renderIcons() {
         card.classList.add("icon-card");
         card.innerHTML = `
             <img src="${icon.imageUrl}" 
-                 onerror="this.src='https://raw.githubusercontent.com/starexxx/IDItems/b8295c7bda85f3fadb7112ede8aa56b1e2d99680/assets/error-404.png'" 
+                 onerror="this.src='https://system.ffgarena.cloud/api/iconsff?image=1001000100.png'" 
                  onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}', '${icon.imageUrl}')">
         `;
         grid.appendChild(card);

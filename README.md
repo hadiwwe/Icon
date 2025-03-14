@@ -33,10 +33,10 @@
 ```
 
 ## Project Index
-<details open>
-  <summary><b>Free Fire Items</b></summary>
+<details>
+  <summary><i><b><code>FF ITEMS</code></i></b></summary>
     <details>
-        <summary><b>main</b></summary>
+        <summary>main</summary>
         <blockquote>
             <table>
                 <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/README.md">README.md</a></b></td></tr>
@@ -47,7 +47,7 @@
             </table>
         </blockquote>
         <details>
-            <summary><b>assets</b></summary>
+            <summary>assets</summary>
             <blockquote>
                 <table>
                     <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/error-404.png">error-404.png</a></b></td></tr>
@@ -58,7 +58,7 @@
             </blockquote>
         </details>
         <details>
-            <summary><b>static</b></summary>
+            <summary>src</summary>
             <blockquote>
                 <table>
                     <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/styles.css">styles.css</a></b></td></tr>

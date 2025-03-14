@@ -28,7 +28,7 @@ async function fetchIcons() {
         filteredData = [...iconsData];
         renderIcons();
     } catch (error) {
-        console.error("Failed to fetch icons:", error);
+        console.error("Can't retrieve icons:", error);
     }
 }
 
@@ -46,7 +46,7 @@ function renderIcons() {
         card.innerHTML = `
             <img src="${icon.imageUrl}" 
                  onerror="this.src='assets/error-404.png'" 
-                 onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}', '${icon.imageUrl}')">
+                 onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}')">
         `;
         grid.appendChild(card);
     });

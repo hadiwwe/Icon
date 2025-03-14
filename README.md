@@ -34,7 +34,7 @@
 
 ## Project Index
 <details>
-  <summary><i><b><code>FF ITEMS</code></i></b></summary>
+  <summary><i><b>FF ITEMS</i></b></summary>
     <details>
         <summary>main</summary>
         <blockquote>

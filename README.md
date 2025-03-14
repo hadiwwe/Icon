@@ -5,12 +5,10 @@
 <br>
 
 ## Table of Contents
-- [Project Structure](#project-structure)
-- [Project Index](#project-index)
-- [Contributing](#contributing)
-- [License](#license)
-
----
+<b>[Project Structure](#project-structure)<br>
+[Project Index](#project-index)<br>
+[Contributing](#contributing)<br>
+[License](#license)
 
 ## Project Structure
 
@@ -108,8 +106,6 @@
    </a>
 </p>
 </details>
-
----
 
 ## License
 

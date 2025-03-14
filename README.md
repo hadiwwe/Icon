@@ -5,10 +5,11 @@
 <br>
 
 ## Table of Contents
-<b>[Project Structure](#project-structure)<br>
-[Project Index](#project-index)<br>
-[Contributing](#contributing)<br>
-[License](#license)
+<b>1. [Project Structure](#project-structure)<br>
+2. [Project Index](#project-index)<br>
+3. [Contributing](#contributing)<br>
+4. [License](#license)
+</b>
 
 ## Project Structure
 
@@ -69,7 +70,7 @@
 </details>
 
 ## Contributing
-- **[Report Issues](https://github.com/starexxx/FFItems/issues)**: Submit bugs or feature requests for the `ItemID` project.
+- **[Report Issues](https://github.com/starexxx/FFItems/issues)**: Submit bugs or feature requests for the `FFItems` project.
 - **[Submit Pull Requests](https://github.com/starexxx/FFItems/blob/main/CONTRIBUTING.md)**: Review open PRs and submit your own.
 
 <details closed>
@@ -95,16 +96,6 @@
    ```
 7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
 8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
-</details>
-
-<details closed>
-<summary><b>Contributor Graph</b></summary>
-<br>
-<p align="left">
-   <a href="https://github.com/starexx/FFItems/graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=starexxx/FFItems">
-   </a>
-</p>
 </details>
 
 ## License

@@ -33,7 +33,7 @@
          └─ styles.css
 ```
 
-### Project Index
+## Project Index
 <details open>
   <summary><b>Free Fire Items</b></summary>
     <details>

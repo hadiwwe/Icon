@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchIcons() {
     try {
-        const response = await fetch("assets/app.json");
+        const response = await fetch("https://raw.githubusercontent.com/starexxx/starexxx/refs/heads/main/app.json");
         const data = await response.json();
 
         iconsData = data.map(item => ({
@@ -28,7 +28,7 @@ async function fetchIcons() {
         filteredData = [...iconsData];
         renderIcons();
     } catch (error) {
-        console.error("Can't retrieve icons:", error);
+        console.error("Failed to fetch icons:", error);
     }
 }
 
@@ -45,8 +45,8 @@ function renderIcons() {
         card.classList.add("icon-card");
         card.innerHTML = `
             <img src="${icon.imageUrl}" 
-                 onerror="this.src='assets/error-404.png'" 
-                 onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}, '${icon.imageUrl}')">
+                 onerror="this.src='https://raw.githubusercontent.com/starexxx/IDItems/b8295c7bda85f3fadb7112ede8aa56b1e2d99680/assets/error-404.png'" 
+                 onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}', '${icon.imageUrl}')">
         `;
         grid.appendChild(card);
     });

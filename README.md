@@ -14,59 +14,71 @@
 ## Project Structure
 
 ```sh
-╰─ FFItems
-     ├─ .github
-     │   ╰─ ISSUE_TEMPLATE
-     │     ╰─ bug_report.md
-     ├─ CONTRIBUTING.md
-     ├─ LICENSE
-     ├─ README.md
-     ├─ assets
-     │  ├─ app.json
-     │  ├─ error-404.png
-     │  ├─ header.png
-     │  ╰─ og.png
-     ├─ index.html
-     ╰─ src
-         ├─ script.js
-         ╰─ styles.css
+└── FFItems
+       ├── .github
+       │     └── ISSUE_TEMPLATE
+       │            └── bug_report.md
+       ├── CNAME
+       ├── CONTRIBUTING.md
+       ├── LICENSE
+       ├── README.md
+       ├── assets
+       │  ├── app.json
+       │  ├── error-404.png
+       │  ├── header.png
+       │  └── og.png
+       ├── index.html
+       └── src
+            ├── script.js
+            └── styles.css
 ```
 
 ## Project Index
 <details>
   <summary><i><b>FF ITEMS</i></b></summary>
+  <details>
+    <summary>main</summary>
+    <blockquote>
+      <table>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/README.md">README.md</a></b></td></tr>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/LICENSE">LICENSE</a></b></td></tr>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/CNAME">CNAME</a></b></td></tr>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/assets/">assets/</a></b></td></tr>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/.github/">.github/</a></b></td></tr>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/src/">src/</a></b></td></tr>
+        <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/index.html">index.html</a></b></td></tr>
+      </table>
+    </blockquote>
     <details>
-        <summary>main</summary>
-        <blockquote>
-            <table>
-                <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/README.md">README.md</a></b></td></tr>
-                <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/LICENSE">LICENSE</a></b></td></tr>
-                <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/assets/">assets/</a></b></td></tr>
-                <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/src/">src/</a></b></td></tr>
-                <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/index.html">index.html</a></b></td></tr>
-            </table>
-        </blockquote>
-        <details>
-            <summary>assets</summary>
-            <blockquote>
-                <table>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/error-404.png">error-404.png</a></b></td></tr>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/og.png">og.png</a></b></td></tr>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/app.json">app.json</a></b></td></tr>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/header.png">header.png</a></b></td></tr>
-                </table>
-            </blockquote>
-        </details>
-        <details>
-            <summary>src</summary>
-            <blockquote>
-                <table>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/styles.css">styles.css</a></b></td></tr>
-                    <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/script.js">script.js</a></b></td></tr>
-                </table>
-            </blockquote>
-        </details>
+      <summary>assets</summary>
+      <blockquote>
+        <table>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/error-404.png">error-404.png</a></b></td></tr>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/og.png">og.png</a></b></td></tr>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/app.json">app.json</a></b></td></tr>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/assets/header.png">header.png</a></b></td></tr>
+        </table>
+      </blockquote>
     </details>
+    <details>
+      <summary>src</summary>
+      <blockquote>
+        <table>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/styles.css">styles.css</a></b></td></tr>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/src/script.js">script.js</a></b></td></tr>
+        </table>
+      </blockquote>
+    </details>
+    <details>
+      <summary>.github</summary>
+      <blockquote>
+        <table>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/tree/main/.github/ISSUE_TEMPLATE/">ISSUE_TEMPLATE/</a></b></td></tr>
+          <tr><td><b><a href="https://github.com/starexxx/FFItems/blob/main/.github/ISSUE_TEMPLATE/bug_report.md">bug_report.md</a></b></td></tr>
+        </table>
+      </blockquote>
+    </details>
+  </details>
 </details>
 
 ## Contributing

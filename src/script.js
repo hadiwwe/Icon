@@ -28,7 +28,7 @@ async function fetchIcons() {
         filteredData = [...iconsData];
         renderIcons();
     } catch (error) {
-        console.error("Failed to fetch icons:", error);
+        console.error("Can't retrieve Icons:", error);
     }
 }
 
@@ -45,7 +45,7 @@ function renderIcons() {
         card.classList.add("icon-card");
         card.innerHTML = `
             <img src="${icon.imageUrl}" 
-                 onerror="this.src='https://system.ffgarena.cloud/api/iconsff?image=1001000100.png'" 
+                 onerror="this.src='assets/error-404.png'" 
                  onclick="openModal('${icon.name}', '${icon.itemId}', '${icon.iconName}', '${icon.imageUrl}')">
         `;
         grid.appendChild(card);

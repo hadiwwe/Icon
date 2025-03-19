@@ -23,10 +23,10 @@
        ├── LICENSE
        ├── README.md
        ├── assets
-       │  ├── app.json
-       │  ├── error-404.png
-       │  ├── header.png
-       │  └── og.png
+       │     ├── app.json
+       │     ├── error-404.png
+       │     ├── header.png
+       │     └── og.png
        ├── index.html
        └── src
             ├── script.js

@@ -22,7 +22,7 @@ async function fetchIcons() {
             itemId: item["Item_ID"],
             name: item["Name"],
             iconName: item["Icon_Name"],
-            imageUrl: `https://system.ffgarena.cloud/api/iconsff?image=${item["Item_ID"]}.png`
+            imageUrl: `https://raw.githubusercontent.com/I-SHOW-AKIRU200/AKIRU-ICONS/main/ICONS/${item["Item_ID"]}.png`
         }));
 
         filteredData = [...iconsData];

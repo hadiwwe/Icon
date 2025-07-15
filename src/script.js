@@ -28,7 +28,7 @@ async function fetchIcons() {
         filteredData = [...iconsData];
         renderIcons();
     } catch (error) {
-        console.error("Can't retrieve Icons:", error);
+        console.error("Failed to retrieve Icons:", error);
     }
 }
 

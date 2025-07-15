@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchIcons() {
     try {
-        const response = await fetch("assets/itemData.json");
+        const response = await fetch("https://raw.githubusercontent.com/starexxx/FFItems/refs/heads/main/assets/itemData.json");
         const data = await response.json();
 
         iconsData = data.map(item => ({

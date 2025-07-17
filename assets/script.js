@@ -4,7 +4,7 @@ const notFoundText = () => document.getElementById("not_found_text");
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
   // Fetching 'cdn.json' and parsing it as JSON
-  fetch("https://items.kibomodz.online/assets/cdn.json").then((response) => response.json()),
+  fetch("https://raw.githubusercontent.com/starexxx/FFItems/ed6496f491938e30a127a10d71e490f153406841/assets/cdn.json").then((response) => response.json()),
   // Fetching 'pngs.json' and parsing it as JSON
   fetch(
     `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`,

@@ -1,28 +1,25 @@
 const bodyElement = document.body;
 const extra_set = document.getElementById("extra_set");
 const notFoundText = () => document.getElementById("not_found_text");
-// Fetch data from multiple JSON files concurrently using Promise.all
+
 Promise.all([
-  // Fetching 'cdn.json' and parsing it as JSON
-  fetch("https://raw.githubusercontent.com/starexxx/FFItems/ed6496f491938e30a127a10d71e490f153406841/assets/cdn.json").then((response) => response.json()),
-  // Fetching 'pngs.json' and parsing it as JSON
+
+  fetch("https://item-starexx.vercel.app/assets/cdn.json").then((response) => response.json()),
+
   fetch(
-    `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`,
+    `https://item-starexx.vercel.app/assets/cdn.json`,
   ).then((response) => response.json()),
-  // Fetching 'itemData.json' and parsing it as JSON
+
   fetch("https://items.kibomodz.online/assets/itemData.json").then((response) => response.json()),
-  // Fetching 'ob47_added_itemData.json' and parsing it as JSON
 ])
   .then(([cdnData, pngsData, itemDatar]) => {
-    // Assign the fetched data to global variables for further use
     cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
-    pngs_json_list = pngsData; // Contains data from 'pngs.json'
-    itemData = itemDatar; // Contains data from 'itemData.json'
+    pngs_json_list = pngsData;
+    itemData = itemDatar;
 
     handleDisplayBasedOnURL();
   })
   .catch((error) => {
-    // Log any errors encountered during the fetch or processing
     console.error("Error fetching data:", error);
   });
 
@@ -75,8 +72,8 @@ async function displayPage(pageNumber, searchTerm, webps) {
     filteredItems.length,
   );
   const webpGallery = document.getElementById("webpGallery");
-  const fragment = document.createDocumentFragment(); // Use DocumentFragment for batch DOM updates
-  webpGallery.innerHTML = ""; // Clear existing content
+  const fragment = document.createDocumentFragment();
+  webpGallery.innerHTML = "";
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
     const image = document.createElement("img");
@@ -85,34 +82,31 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.id = "list_item_img";
     image.setAttribute("crossorigin", "anonymous");
     image.setAttribute("alt", item.description);
-    // Determine image source
-    let imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/UI_EPFP_unknown.png`;
+
+    let imgSrc = `https://raw.githubusercontent.com/starexxx/FFItems/5dd347a94489bfcf99d3537d0800eca32c7a7a08/assets/error-404.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
-      imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/${item.icon}.png`;
+      imgSrc = `https://raw.githubusercontent.com/I-SHOW-AKIRU200/AKIRU-ICONS/main/ICONS/${item.icon}.png`;
     } else {
       const keyToFind = item?.itemID ? String(item.itemID) : "Not Provided";
       const value = cdn_img_json[item.itemID.toString()] ?? null;
       if (value) imgSrc = value;
     }
     image.src = imgSrc;
-    // Apply background color if description matches
     if (item.description === "Didn't have an ID and description.") {
       image.style.background = "#607D8B";
     }
-    // Add click event listener
     image.addEventListener("click", () =>
       displayItemInfo(item, imgSrc, image, (isTrashMode = false)),
     );
-
-    // Append image to fragment
+    
     fragment.appendChild(image);
   }
-  webpGallery.appendChild(fragment); // Add all images at once
+  webpGallery.appendChild(fragment);
   let totalPages = Math.ceil(
     filteredItems.length / itemID.config.perPageLimitItem,
   );
   renderPagination(searchTerm, webps, (isTrashMode = false), totalPages); // Render pagination
-  updateUrl(); // Update URL
+  updateUrl();
 }
 
 async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
@@ -161,7 +155,6 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
   }
 }
 
-// Wait for the DOM to be fully loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
   initializeInterfaceEdgeBtn();
   const inputField = document.getElementById("search-input");

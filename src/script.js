@@ -5,7 +5,7 @@
         let iconsData = [];
         let filteredData = [];
         let currentPage = 0;
-        const itemsPerPage = 100;
+        const itemsPerPage = 100; // per page icon H5/V99
         let uniqueFilters = {
             itemType: new Set(),
             Rare: new Set(),
@@ -13,7 +13,7 @@
         };
         let lastClickedCard = null;
         let modalOpen = false;
-        let currentSort = 'id';
+        let currentSort = 'rarity'; // Sort !id, !name, !rarity,
         let currentTypeFilter = '';
         let currentCollectionFilter = '';
         let currentRarityFilter = '';
@@ -58,7 +58,7 @@
             // Change menu button color when sidebar is open
             const menuButton = document.getElementById("menuButton");
             if (sidebar.classList.contains("open")) {
-                menuButton.innerHTML = '<i class="fas fa-bars" style="color:#FFBA00"></i>';
+                menuButton.innerHTML = '<i class="fas fa-bars" style="color:#F9F9F9"></i>';
             } else {
                 menuButton.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -68,7 +68,7 @@
             try {
                 const response = await fetch("https://raw.githubusercontent.com/9112000/FFItems/74c2af66d691776c2452bd72ca0388ba52d7c5fb/assets/itemData.json");
                 const data = await response.json();
-
+                // Map of itemData.json
                 iconsData = data.map(item => ({
                     itemId: item["itemID"],
                     name: item["description"],

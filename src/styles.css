@@ -49,7 +49,7 @@
             padding: 0;
             min-height: 100vh;
             touch-action: pan-y;
-            background-image: url('/assets/images/cp.jpg');
+            background-image: url('https://cdn.statically.io/gh/9112000/FFItems/3e79677/assets/images/cp.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;

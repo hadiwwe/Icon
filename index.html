@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+       <head>
+<head>
+       <title>Starexx Items</title>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+       <meta name="author" content="Starexx">
+       <meta name="description" content="Search Free Fire game items by name or description to retrieve item ID, name & details. Battle in Style and be the last survivor!">
+       <meta name="keywords" content="Free Fire items, Free Fire item ID, FF items list, Starexx FF, Garena Free Fire, battle royale, Starexx Items">
+       <meta property="og:title" content="Starexx Items - Free Fire Item Search">
+       <meta property="og:description" content="Search Free Fire game items by name or description to retrieve item ID, name & details.">
+       <meta property="og:image" content="https://item-starexx.vercel.app/icon/android-chrome-192x192.png">
+       <meta property="og:type" content="website">
+       <meta property="og:url" content="https://item-starexx.vercel.app">
+       <meta name="twitter:card" content="summary_large_image">
+       <meta name="twitter:title" content="Starexx Items - Free Fire Item Info">
+       <meta name="twitter:description" content="Quickly find Free Fire item IDs, names & details with Starexx.">
+       <meta name="twitter:image" content="https://item-starexx.vercel.app/icons/android-chrome-192x192.png">
+       <meta name="google-site-verification" content="J20YkdBYbFS0_YZdIu9Z-sKGKzYZfqOFFkQ0numjLq0">
+       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+       <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+       <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+       <link rel="manifest" href="/site.webmanifest">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+       <link rel="stylesheet" href="src/styles.css">
+       <link rel="manifest" href="/manifest.json">
+       <link rel="canonical" href="https://item-starexx.vercel.app/">
+       <meta name="robots" content="index, follow">
+</head>
+       </head>
+       <body>
+              <div class="loading-dot" id="loadingDot"></div>
+              <div class="header" id="header">
+                     <div class="header-title-container">
+                            <div class="header-title">FFItems</div>
+                            <div class="header-menu" id="menuButton">
+                                   <i class="fas fa-bars"></i>
+                            </div>
+                     </div>
+              </div>
+              <div class="sidebar" id="sidebar">
+                     <div class="sidebar-close" id="sidebarClose">
+                            <i class="fas fa-times"></i>
+                     </div>
+                     <div class="sidebar-search">
+                            <i class="fas fa-search sidebar-search-icon"></i>
+                            <textarea class="sidebar-textarea" id="search" placeholder="Search by item details"></textarea>
+                     </div>
+                     <div class="sidebar-menu">
+                            <div class="sidebar-menu-item" id="rarityMenu">
+                                   <span>Rarity</span>
+                                   <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="sidebar-submenu" id="raritySubmenu">
+                                   <div class="sidebar-filter-options" id="filter-Rare-buttons"></div>
+                            </div>
+                            <div class="sidebar-menu-item" id="sortMenu">
+                                   <span>Sort By</span>
+                                   <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="sidebar-submenu" id="sortSubmenu">
+                                   <div class="sidebar-filter-options" id="filter-sort-buttons"></div>
+                            </div>
+                            <div class="sidebar-menu-item" id="collectionsMenu">
+                                   <span>Collections</span>
+                                   <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="sidebar-submenu" id="collectionsSubmenu">
+                                   <div class="sidebar-filter-options" id="filter-collectionType-buttons"></div>
+                            </div>
+                            <div class="sidebar-menu-item" id="typesMenu">
+                                   <span>Item Types</span>
+                                   <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="sidebar-submenu" id="typesSubmenu">
+                                   <div class="sidebar-filter-options" id="filter-itemType-buttons"></div>
+                            </div>
+                     </div>
+              </div>
+              <div class="filter-tabs" id="filterTabs"></div>
+              <div class="container" id="container" style="display: none;">
+                     <div class="grid-container" id="iconGrid"></div>
+                     <div class="pagination-container">
+                            <div class="pagination" id="pagination"></div>
+                     </div>
+              </div>
+              <div class="modal" id="modal">
+                     <div class="modal-bg"></div>
+                     <div class="modal-img-container" id="modalImgContainer">
+                            <img id="modalTempImage" alt="Item Image">
+                     </div>
+                     <div class="modal-content">
+                            <img id="modalImage" alt="Item Image">
+                            <p>
+                                   <b id="modalDescription"></b>
+                                   <br>
+                                   <span id="modalDescription2"></span>
+                            </p>
+                            <div class="divider"></div>
+                            <p>
+                                   <b>Item ID: </b>
+                                   <span id="modalItemId"></span>
+                                   <br>
+                                   <b>Icon: </b>
+                                   <span id="modalIconName"></span>
+                            </p>
+                            <div class="divider"></div>
+                            <p>
+                                   <b></b>
+                                   <span id="modalType"></span>, <b></b>
+                                   <span id="modalRare"></span>
+                            </p>
+                            <button class="modal-close" onclick="closeModal()">Tap to close</button>
+                     </div>
+              </div>
+              <script src="src/script.js"></script>
+       </body>
+</html>

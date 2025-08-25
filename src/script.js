@@ -2,7 +2,6 @@
 @license MIT
 @author Starexx
 */
-
 let iconsData = [];
 let filteredData = [];
 let currentPage = 0;
@@ -19,11 +18,28 @@ let currentTypeFilter = '';
 let currentCollectionFilter = '';
 let currentRarityFilter = '';
 
-const ogTags = {
-    title: document.querySelector('meta[property="og:title"]'),
-    description: document.querySelector('meta[property="og:description"]'),
-    image: document.querySelector('meta[property="og:image"]'),
-    url: document.querySelector('meta[property="og:url"]')
+const rarityDisplayNames = {
+    'NONE': 'COMMON',
+    'WHITE': 'COMMON',
+    'BLUE': 'RARE',
+    'GREEN': 'UNCOMMON',
+    'ORANGE': 'MYTHIC',
+    'ORANGE_PLUS': 'MYTHIC PLUS',
+    'PURPLE': 'EPIC',
+    'PURPLE_PLUS': 'EPIC PLUS',
+    'RED': 'ARTIFACT'
+};
+
+const rarityCardImages = {
+    'NONE': 'assets/images/card/COMMON.png',
+    'WHITE': 'assets/images/card/COMMON.png',
+    'BLUE': 'assets/images/card/RARE.png',
+    'GREEN': 'assets/images/card/UNCOMMON.png',
+    'ORANGE': 'assets/images/card/MYTHIC.png',
+    'ORANGE_PLUS': 'assets/images/card/MYTHIC_PLUS.png',
+    'PURPLE': 'assets/images/card/EPIC.png',
+    'PURPLE_PLUS': 'assets/images/card/EPIC_PLUS.png',
+    'RED': 'assets/images/card/ARTIFACT.png'
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,8 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("container").style.display = "block";
     }, 1000);
 
-    initOpenGraph();
-    processUrlParameters();
     fetchIcons();
     
     document.getElementById("menuButton").addEventListener("click", toggleSidebar);
@@ -52,114 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: false });
 });
 
-function initOpenGraph() {
-    const pageUrl = window.location.href.split('?')[0];
-    
-    if (!ogTags.title) {
-        const tag = document.createElement('meta');
-        tag.setAttribute('property', 'og:title');
-        document.head.appendChild(tag);
-        ogTags.title = tag;
-    }
-    
-    if (!ogTags.description) {
-        const tag = document.createElement('meta');
-        tag.setAttribute('property', 'og:description');
-        document.head.appendChild(tag);
-        ogTags.description = tag;
-    }
-    
-    if (!ogTags.image) {
-        const tag = document.createElement('meta');
-        tag.setAttribute('property', 'og:image');
-        document.head.appendChild(tag);
-        ogTags.image = tag;
-    }
-    
-    if (!ogTags.url) {
-        const tag = document.createElement('meta');
-        tag.setAttribute('property', 'og:url');
-        document.head.appendChild(tag);
-        ogTags.url = tag;
-    }
-    
-    ogTags.title.setAttribute('content', document.title || 'Starexx Items - Free Fire Item Search');
-    ogTags.description.setAttribute('content', 'Quickly find Free Fire item IDs, names & details with Starexx Items');
-    ogTags.image.setAttribute('content', window.location.origin + 'icons/android-chrome-192x192.png');
-    ogTags.url.setAttribute('content', pageUrl);
-}
-
-function processUrlParameters() {
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    const query = urlParams.get('q');
-    if (query) {
-        document.getElementById('search').value = query;
-    }
-    
-    const rare = urlParams.get('rare');
-    if (rare) {
-        currentRarityFilter = rare.toUpperCase();
-    }
-    
-    const type = urlParams.get('type');
-    if (type) {
-        currentTypeFilter = type.replace(/_/g, ' ').toUpperCase();
-    }
-    
-    const collection = urlParams.get('collection');
-    if (collection) {
-        currentCollectionFilter = collection.replace(/_/g, ' ').toUpperCase();
-    }
-}
-
-function updateUrl() {
-    const urlParams = new URLSearchParams();
-    
-    const searchQuery = document.getElementById("search").value;
-    if (searchQuery) {
-        urlParams.set('q', searchQuery);
-    }
-    
-    if (currentRarityFilter) {
-        urlParams.set('rare', currentRarityFilter.toLowerCase().replace(/ /g, '_'));
-    }
-    
-    if (currentTypeFilter) {
-        urlParams.set('type', currentTypeFilter.toLowerCase().replace(/ /g, '_'));
-    }
-    
-    if (currentCollectionFilter) {
-        urlParams.set('collection', currentCollectionFilter.toLowerCase().replace(/ /g, '_'));
-    }
-    
-    const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
-    window.history.replaceState({}, '', newUrl);
-    ogTags.url.setAttribute('content', window.location.origin + newUrl);
-}
-
-function updateOpenGraphForItem(item) {
-    if (!item) return;
-    
-    ogTags.title.setAttribute('content', item.name + ' - Free Fire Item');
-    ogTags.description.setAttribute('content', item.description || 'Free Fire item details');
-    
-    if (item.imageUrl) {
-        ogTags.image.setAttribute('content', item.imageUrl);
-    }
-    
-    const urlParams = new URLSearchParams();
-    urlParams.set('q', item.name);
-    
-    const newUrl = window.location.pathname + '?' + urlParams.toString();
-    window.history.replaceState({}, '', newUrl);
-    ogTags.url.setAttribute('content', window.location.origin + newUrl);
-}
-
 function toggleSubmenu(type) {
     const menuItem = document.getElementById(`${type}Menu`);
     const submenu = document.getElementById(`${type}Submenu`);
-    
     menuItem.classList.toggle('active');
     submenu.classList.toggle('open');
 }
@@ -167,7 +76,6 @@ function toggleSubmenu(type) {
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("open");
-    
     const menuButton = document.getElementById("menuButton");
     if (sidebar.classList.contains("open")) {
         menuButton.innerHTML = '<i class="fas fa-bars" style="color:#F9F9F9"></i>';
@@ -190,12 +98,14 @@ async function fetchIcons() {
             itemType: item["itemType"] ? item["itemType"].replace(/_/g, ' ') : '',
             collectionType: item["collectionType"] ? item["collectionType"].replace(/_/g, ' ') : '',
             Rare: item["Rare"],
-            imageUrl: `https://cdn.jsdelivr.net/gh/9112000/OB49@main/ICONS/${item["itemID"]}.png`
+            displayRarity: rarityDisplayNames[item["Rare"]] || item["Rare"],
+            cardImageUrl: rarityCardImages[item["Rare"]] || 'assets/images/card/COMMON.png',
+            iconUrl: `https://cdn.jsdelivr.net/gh/9112000/OB49@main/ICONS/${item["itemID"]}.png`
         }));
 
         iconsData.forEach(item => {
             if (item.itemType) uniqueFilters.itemType.add(item.itemType);
-            if (item.Rare) uniqueFilters.Rare.add(item.Rare);
+            if (item.displayRarity) uniqueFilters.Rare.add(item.displayRarity);
             if (item.collectionType) uniqueFilters.collectionType.add(item.collectionType);
         });
 
@@ -375,7 +285,7 @@ function applyFilters() {
             item.iconName.toLowerCase().includes(searchQuery);
         
         const matchesType = !currentTypeFilter || item.itemType === currentTypeFilter;
-        const matchesRare = !currentRarityFilter || item.Rare === currentRarityFilter;
+        const matchesRare = !currentRarityFilter || item.displayRarity === currentRarityFilter;
         const matchesCollection = !currentCollectionFilter || item.collectionType === currentCollectionFilter;
         
         return matchesSearch && matchesType && matchesRare && matchesCollection;
@@ -384,13 +294,6 @@ function applyFilters() {
     sortIcons();
     currentPage = 0;
     renderIcons();
-    updateUrl();
-    
-    if (filteredData.length === 1) {
-        updateOpenGraphForItem(filteredData[0]);
-    } else {
-        initOpenGraph();
-    }
 }
 
 function sortIcons() {
@@ -400,20 +303,19 @@ function sortIcons() {
         filteredData.sort((a, b) => a.itemId - b.itemId);
     } else if (currentSort === 'rarity') {
         const rarityOrder = {
-            'NONE': 1,
-            'WHITE': 2,
-            'BLUE': 3,
-            'GREEN': 4,
-            'ORANGE': 5,
-            'ORANGE_PLUS': 6,
-            'PURPLE': 7,
-            'PURPLE_PLUS': 8,
-            'RED': 9
+            'COMMON': 1,
+            'UNCOMMON': 2,
+            'RARE': 3,
+            'EPIC': 4,
+            'EPIC PLUS': 5,
+            'MYTHIC': 6,
+            'MYTHIC PLUS': 7,
+            'ARTIFACT': 8
         };
         
         filteredData.sort((a, b) => {
-            const aRarity = rarityOrder[a.Rare] || 0;
-            const bRarity = rarityOrder[b.Rare] || 0;
+            const aRarity = rarityOrder[a.displayRarity] || 0;
+            const bRarity = rarityOrder[b.displayRarity] || 0;
             return bRarity - aRarity || a.itemId - b.itemId;
         });
     }
@@ -447,22 +349,38 @@ function renderIcons() {
                 icon.name,
                 icon.itemId,
                 icon.iconName,
-                icon.imageUrl,
+                icon.iconUrl,
                 icon.description,
                 icon.description2,
                 icon.itemType,
-                icon.Rare
+                icon.displayRarity
             );
-            updateOpenGraphForItem(icon);
         };
         
-        const img = document.createElement("img");
-        img.src = icon.imageUrl;
-        img.alt = icon.name;
-        img.onerror = () => {
-            img.src = 'assets/images/error-404.png';
+        const cardContainer = document.createElement("div");
+        cardContainer.style.position = "relative";
+        cardContainer.style.width = "100%";
+        cardContainer.style.height = "100%";
+        
+        const cardBg = document.createElement("img");
+        cardBg.src = icon.cardImageUrl;
+        cardBg.alt = icon.name + " card background";
+        cardBg.className = "card-bg";
+        cardBg.onerror = () => {
+            cardBg.src = 'assets/images/error-404.png';
         };
-        card.appendChild(img);
+        
+        const cardIcon = document.createElement("img");
+        cardIcon.src = icon.iconUrl;
+        cardIcon.alt = icon.name;
+        cardIcon.className = "card-icon";
+        cardIcon.onerror = () => {
+            cardIcon.src = 'assets/images/error-404.png';
+        };
+        
+        cardContainer.appendChild(cardBg);
+        cardContainer.appendChild(cardIcon);
+        card.appendChild(cardContainer);
         grid.appendChild(card);
     });
 
@@ -586,8 +504,8 @@ document.addEventListener('click', function(event) {
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
         navigator.serviceWorker
-        .register("/sw.js")
-        .then(reg => console.log("Service worker registered", reg))
-        .catch(err => console.error("Service worker registration failed ", err));
+            .register("/sw.js")
+            .then(reg => console.log("Service worker registered", reg))
+            .catch(err => console.error("Service worker registration failed", err));
     });
 }

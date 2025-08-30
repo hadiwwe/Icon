@@ -825,19 +825,17 @@
             'PURPLE_PLUS': 'EPIC PLUS',
             'Red': 'ARTIFACT'
         };
-
-        const rarityCardImages = {
-            'NONE': 'assets/images/card/COMMON.png',
-            'WHITE': 'assets/images/card/COMMON.png',
-            'BLUE': 'assets/images/card/RARE.png',
-            'GREEN': 'assets/images/card/UNCOMMON.png',
-            'ORANGE': 'assets/images/card/MYTHIC.png',
-            'ORANGE_PLUS': 'assets/images/card/MYTHIC_PLUS.png',
-            'PURPLE': 'assets/images/card/EPIC.png',
-            'PURPLE_PLUS': 'assets/images/card/EPIC_PLUS.png',
-            'Red': 'assets/images/card/ARTIFACT.png'
+       const rarityCardImages = {
+           'NONE': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/COMMON.png',
+           'WHITE': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/COMMON.png',
+           'BLUE': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/RARE.png',
+           'GREEN': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/UNCOMMON.png',
+           'ORANGE': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/MYTHIC.png',
+           'ORANGE_PLUS': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/MYTHIC_PLUS.png',
+           'PURPLE': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/EPIC.png',
+           'PURPLE_PLUS': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/EPIC_PLUS.png',
+           'Red': 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/ARTIFACT.png'
         };
-
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 const loadingDot = document.getElementById("loadingDot");
@@ -1234,7 +1232,7 @@
                 cardBg.alt = icon.name + " card background";
                 cardBg.className = "card-bg";
                 cardBg.onerror = () => {
-                    cardBg.src = 'assets/images/error-404.png';
+                    cardBg.src = 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png';
                 };
                 
                 const cardIcon = document.createElement("img");
@@ -1242,7 +1240,7 @@
                 cardIcon.alt = icon.name;
                 cardIcon.className = "card-icon";
                 cardIcon.onerror = () => {
-                    cardIcon.src = 'assets/images/error-404.png';
+                    cardIcon.src = 'https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png';
                 };
                 
                 cardContainer.appendChild(cardBg);

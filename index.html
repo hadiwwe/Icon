@@ -1,82 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="src/styles.css">
-  <meta name="description" content="Search Free Fire game items by name or description to retrieve item ID, name & details. Battle in Style and be the last survivor!">
-  <meta property="og:description" content="Search Free Fire game items by name or description to retrieve item ID, name & details.">
-  <meta name="keywords" content="Free Fire items, Free Fire item ID, FF items list, Starexx FF, Garena Free Fire, battle royale, Starexx Items, Free Fire items, Free Fire item ID, Garena Free Fire, FF items database, weapon skins, character skins, emotes, bundles, parachutes, loot crates, pet skins, Free Fire cosmetics, Free Fire shop items, FF rare items, FF weapon upgrades, Free Fire gun skins, FF character costumes, Free Fire emoticons, FF vehicle skins, Free Fire gloo wall skins, FF backpacks, Free Fire melee weapons">
-  <meta property="og:title" content="FFItems">
-  <meta property="og:image" content="https://9112000.github.io/FFItems/icons/android-chrome-192x192.png">
-  <meta property="og:type" content="website">
-  <meta name="author" content="Starexx">
-  <meta property="og:url" content="https://9112000.github.io/FFItems/">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="src/styles.css" />
+  <meta name="description" content="Search Free Fire game items by name or description to retrieve item ID, name & details. Battle in Style and be the last survivor!" />
+  <meta property="og:description" content="Search Free Fire game items by name or description to retrieve item ID, name & details." />
+  <meta name="keywords"content="Free Fire items, Free Fire item ID, FF items list, Starexx FF, Garena Free Fire, battle royale, Starexx Items, Free Fire items, Free Fire item ID, Garena Free Fire, FF items database, weapon skins, character skins, emotes, bundles, parachutes, loot crates, pet skins, Free Fire cosmetics, Free Fire shop items, FF rare items, FF weapon upgrades, Free Fire gun skins, FF character costumes, Free Fire emoticons, FF vehicle skins, Free Fire gloo wall skins, FF backpacks, Free Fire melee weapons"/>
+  <meta property="og:title" content="FFItems" />
+  <meta property="og:image" content="https://9112000.github.io/FFItems/icons/android-chrome-192x192.png" />
+  <meta property="og:type" content="website" />
+  <meta name="author" content="Starexx" />
+  <meta property="og:url" content="https://9112000.github.io/FFItems/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>Starexx Items</title>
-  <meta name="twitter:title" content="FFItems">
-  <meta name="twitter:description" content="Quickly find Free Fire item IDs, names & details with Starexx Items.">
-  <meta name="twitter:image" content="https://9112000.github.io/FFItems/icons/android-chrome-192x192.png">
+  <meta name="twitter:title" content="FFItems" />
+  <meta name="twitter:description" content="Quickly find Free Fire item IDs, names & details with Starexx Items." />
+  <meta name="twitter:image" content="https://9112000.github.io/FFItems/icons/android-chrome-192x192.png" />
   <meta name="google-site-verification" content="joLKEyzfZROYT_Ck4mea3yx94rNwOqRwqalvV-xcA8U" />
-  <link rel="canonical" href="https://9112000.github.io/FFItems/">
-  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://9112000.github.io/FFItems/" />
+  <meta name="robots" content="index, follow" />
  </head>
  <body>
   <div class="loading-dot" id="loadingDot"></div>
   <div class="header" id="header">
-   <div class="header-title-container">
-    <div class="header-title">FFItems</div>
-    <div class="header-menu" id="menuButton">
-     <i class="fas fa-bars"></i>
-    </div>
+   <div class="header-tabs" id="headerTabs"></div>
+   <div class="header-menu-button" id="menuButton">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="240" height="240">
+     <rect x="3" y="6" width="15" height="12" rx="4" ry="4" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linejoin="round" />
+     <path d="M9 6 L9 18" fill="none" stroke="#9b9b9b" stroke-width="2" stroke-linecap="round" />
+    </svg>
    </div>
   </div>
   <div class="sidebar" id="sidebar">
    <div class="sidebar-close" id="sidebarClose">
-    <i class="fas fa-times"></i>
+    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
    </div>
    <div class="sidebar-search">
-    <i class="fas fa-search sidebar-search-icon"></i>
+    <div class="sidebar-search-icon">
+     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+     </svg>
+    </div>
     <textarea class="sidebar-textarea" id="search" placeholder="Search by item details"></textarea>
+   </div>
+   <div class="data-type-selector">
+    <button class="data-type-button active" id="itemsButton">Items</button>
+    <button class="data-type-button" id="assetsButton">Assets</button>
    </div>
    <div class="sidebar-menu">
     <div class="sidebar-menu-item" id="rarityMenu">
      <span>Rarity</span>
-     <i class="fas fa-chevron-right"></i>
+     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 5l7 7-7 7" />
+     </svg>
     </div>
     <div class="sidebar-submenu" id="raritySubmenu">
      <div class="sidebar-filter-options" id="filter-Rare-buttons"></div>
     </div>
     <div class="sidebar-menu-item" id="sortMenu">
      <span>Sort By</span>
-     <i class="fas fa-chevron-right"></i>
+     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 5l7 7-7 7" />
+     </svg>
     </div>
     <div class="sidebar-submenu" id="sortSubmenu">
      <div class="sidebar-filter-options" id="filter-sort-buttons"></div>
     </div>
     <div class="sidebar-menu-item" id="collectionsMenu">
      <span>Collections</span>
-     <i class="fas fa-chevron-right"></i>
+     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 5l7 7-7 7" />
+     </svg>
     </div>
     <div class="sidebar-submenu" id="collectionsSubmenu">
      <div class="sidebar-filter-options" id="filter-collectionType-buttons"></div>
     </div>
     <div class="sidebar-menu-item" id="typesMenu">
      <span>Item Types</span>
-     <i class="fas fa-chevron-right"></i>
+     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 5l7 7-7 7" />
+     </svg>
     </div>
     <div class="sidebar-submenu" id="typesSubmenu">
      <div class="sidebar-filter-options" id="filter-itemType-buttons"></div>
     </div>
    </div>
+   <div class="github-footer">
+    <svg class="github-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="window.open('https://github.com/9112000/FFItems', '_blank')">
+     <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"   />
+    </svg>
+   </div>
   </div>
-  <div class="filter-tabs" id="filterTabs"></div>
   <div class="container" id="container" style="display: none;">
    <div class="grid-container" id="iconGrid"></div>
    <div class="pagination-container">
@@ -84,32 +108,28 @@
    </div>
   </div>
   <div class="modal" id="modal">
-   <div class="modal-bg"></div>
-   <div class="modal-img-container" id="modalImgContainer">
-    <img id="modalTempImage" alt="Item Image">
-   </div>
+   <div class="modal-bg" id="modalBg"></div>
    <div class="modal-content">
-    <img id="modalImage" alt="Item Image">
+    <img id="modalImage" alt="Item Image" />
     <p>
      <b id="modalDescription"></b>
-     <br>
+     <br />
      <span id="modalDescription2"></span>
     </p>
     <div class="divider"></div>
     <p>
      <b>Item ID: </b>
      <span id="modalItemId"></span>
-     <br>
+     <br />
      <b>Icon: </b>
      <span id="modalIconName"></span>
     </p>
     <div class="divider"></div>
     <p>
-     <b></b>
-     <span id="modalType"></span>, <b></b>
+     <span id="modalType"></span>
      <span id="modalRare"></span>
     </p>
-    <button class="modal-close" onclick="closeModal()">Tap to close</button>
+    <button class="modal-close" id="modalClose">Tap to close</button>
    </div>
   </div>
   <script src="src/script.js"></script>

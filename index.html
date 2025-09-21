@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta charset="UTF-8" />
@@ -10,18 +10,18 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="src/styles.css" />
-  <meta name="description" content="Search Free Fire game items by name or description to retrieve item ID, name & details. Battle in Style and be the last survivor!" />
-  <meta property="og:description" content="Search Free Fire game items by name or description to retrieve item ID, name & details." />
-  <meta name="keywords"content="Free Fire items, Free Fire item ID, FF items list, Starexx FF, Garena Free Fire, battle royale, Starexx Items, Free Fire items, Free Fire item ID, Garena Free Fire, FF items database, weapon skins, character skins, emotes, bundles, parachutes, loot crates, pet skins, Free Fire cosmetics, Free Fire shop items, FF rare items, FF weapon upgrades, Free Fire gun skins, FF character costumes, Free Fire emoticons, FF vehicle skins, Free Fire gloo wall skins, FF backpacks, Free Fire melee weapons"/>
-  <meta property="og:title" content="FFItems" />
+  <meta name="description" content="جستجوی آیتم‌های بازی فری فایر با نام یا توضیحات برای یافتن شناسه آیتم، نام و جزئیات. با استایل بجنگید و آخرین بازمانده باشید!" />
+  <meta property="og:description" content="جستجوی آیتم‌های بازی فری فایر با نام یا توضیحات برای یافتن شناسه آیتم، نام و جزئیات." />
+  <meta name="keywords" content="آیتم‌های فری فایر, شناسه آیتم فری فایر, لیست آیتم‌های FF, گارنا فری فایر, بتل رویال, پایگاه داده آیتم‌های FF, اسکین‌های سلاح, اسکین‌های کاراکتر, ایموت‌ها, باندل‌ها, چتر نجات, لوت کریت‌ها, اسکین‌های پت, آیتم‌های تزئینی فری فایر, آیتم‌های فروشگاه فری فایر, آیتم‌های نادر FF, ارتقاء سلاح فری فایر, اسکین‌های تفنگ فری فایر, لباس‌های کاراکتر فری فایر, ایموجی‌های فری فایر, اسکین‌های وسایل نقلیه فری فایر, اسکین‌های دیوار گلو فری فایر, کوله‌پشتی‌های فری فایر, سلاح‌های نزدیک فری فایر" />
+  <meta property="og:title" content="آیتم‌ها" />
   <meta property="og:image" content="https://9112000.github.io/FFItems/icons/android-chrome-192x192.png" />
   <meta property="og:type" content="website" />
-  <meta name="author" content="Starexx" />
+  <meta name="author" content="فری فایر" />
   <meta property="og:url" content="https://9112000.github.io/FFItems/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <title>Starexx Items</title>
-  <meta name="twitter:title" content="FFItems" />
-  <meta name="twitter:description" content="Quickly find Free Fire item IDs, names & details with Starexx Items." />
+  <title>آیتم‌ها </title>
+  <meta name="twitter:title" content="آیتم‌ها " />
+  <meta name="twitter:description" content="با ابزار آیتم ها به‌سرعت شناسه، نام و جزئیات آیتم‌های فری فایر را پیدا کنید." />
   <meta name="twitter:image" content="https://9112000.github.io/FFItems/icons/android-chrome-192x192.png" />
   <meta name="google-site-verification" content="joLKEyzfZROYT_Ck4mea3yx94rNwOqRwqalvV-xcA8U" />
   <link rel="canonical" href="https://9112000.github.io/FFItems/" />
@@ -50,15 +50,15 @@
       <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
      </svg>
     </div>
-    <textarea class="sidebar-textarea" id="search" placeholder="Search by item details"></textarea>
+    <textarea class="sidebar-textarea" id="search" placeholder="جستجو بر اساس جزئیات آیتم"></textarea>
    </div>
    <div class="data-type-selector">
-    <button class="data-type-button active" id="itemsButton">Items</button>
-    <button class="data-type-button" id="assetsButton">Assets</button>
+    <button class="data-type-button active" id="itemsButton">آیتم‌ها</button>
+    <button class="data-type-button" id="assetsButton">دارایی‌ها</button>
    </div>
    <div class="sidebar-menu">
     <div class="sidebar-menu-item" id="rarityMenu">
-     <span>Rarity</span>
+     <span>نادر بودن</span>
      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M9 5l7 7-7 7" />
      </svg>
@@ -67,7 +67,7 @@
      <div class="sidebar-filter-options" id="filter-Rare-buttons"></div>
     </div>
     <div class="sidebar-menu-item" id="sortMenu">
-     <span>Sort By</span>
+     <span>مرتب‌سازی بر اساس</span>
      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M9 5l7 7-7 7" />
      </svg>
@@ -76,7 +76,7 @@
      <div class="sidebar-filter-options" id="filter-sort-buttons"></div>
     </div>
     <div class="sidebar-menu-item" id="collectionsMenu">
-     <span>Collections</span>
+     <span>مجموعه‌ها</span>
      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M9 5l7 7-7 7" />
      </svg>
@@ -85,7 +85,7 @@
      <div class="sidebar-filter-options" id="filter-collectionType-buttons"></div>
     </div>
     <div class="sidebar-menu-item" id="typesMenu">
-     <span>Item Types</span>
+     <span>انواع آیتم‌ها</span>
      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M9 5l7 7-7 7" />
      </svg>
@@ -95,7 +95,7 @@
     </div>
    </div>
    <div class="github-footer">
-    <svg class="github-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="window.open('https://github.com/9112000/FFItems', '_blank')">
+    <svg class="github-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="window.open('https://freefiremax.ir', '_blank')">
      <path
       d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"   />
     </svg>
@@ -110,7 +110,7 @@
   <div class="modal" id="modal">
    <div class="modal-bg" id="modalBg"></div>
    <div class="modal-content">
-    <img id="modalImage" alt="Item Image" />
+    <img id="modalImage" alt="تصویر آیتم" />
     <p>
      <b id="modalDescription"></b>
      <br />
@@ -118,10 +118,10 @@
     </p>
     <div class="divider"></div>
     <p>
-     <b>Item ID: </b>
+     <b>شناسه آیتم: </b>
      <span id="modalItemId"></span>
      <br />
-     <b>Icon: </b>
+     <b>آیکون: </b>
      <span id="modalIconName"></span>
     </p>
     <div class="divider"></div>
@@ -129,7 +129,7 @@
      <span id="modalType"></span>
      <span id="modalRare"></span>
     </p>
-    <button class="modal-close" id="modalClose">Tap to close</button>
+    <button class="modal-close" id="modalClose">برای بستن کلیک کنید</button>
    </div>
   </div>
   <script src="src/script.js"></script>

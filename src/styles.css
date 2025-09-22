@@ -690,3 +690,101 @@ body::-webkit-scrollbar {
     color: var(--filter-active-text);
     transform: scale(1.02);
 }
+
+/* راست‌چین کردن کل صفحه و المان‌های کلیدی */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+.header, .sidebar, .container, .modal-content, .sidebar-filter-button, .filter-tab, .pagination, .icon-card, .no-results, .footer, .data-type-selector {
+    direction: rtl;
+    text-align: right;
+}
+
+/* تنظیمات خاص برای سایدبار */
+.sidebar {
+    right: auto;
+    left: -280px; /* سایدبار از سمت چپ باز می‌شه */
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-close {
+    right: auto;
+    left: 15px; /* دکمه بستن سایدبار به سمت چپ منتقل می‌شه */
+}
+
+/* تنظیمات جستجو */
+.sidebar-search-icon {
+    left: auto;
+    right: 12px; /* آیکون جستجو به سمت راست */
+}
+
+.sidebar-textarea {
+    padding: 12px 38px 12px 12px; /* پدینگ برای سازگاری با آیکون جستجو */
+}
+
+/* تنظیمات دکمه‌های فیلتر */
+.sidebar-filter-button {
+    padding-right: 15px;
+    padding-left: 10px; /* تغییر جهت پدینگ */
+}
+
+.sidebar-filter-button::before {
+    left: auto;
+    right: 0; /* خط عمودی دکمه‌ها به سمت راست */
+}
+
+/* تنظیمات زیرمنو */
+.sidebar-submenu {
+    padding-right: 15px;
+    padding-left: 0; /* تغییر جهت پدینگ */
+}
+
+.sidebar-submenu-item {
+    padding-right: 15px;
+    padding-left: 0; /* تغییر جهت پدینگ */
+}
+
+.sidebar-submenu-item::before {
+    left: auto;
+    right: 0; /* خط عمودی زیرمنوها به سمت راست */
+}
+
+/* تنظیمات هدر */
+.header {
+    flex-direction: row-reverse; /* معکوس کردن جهت هدر برای راست‌چین */
+}
+
+.header-menu-button {
+    margin-left: 0;
+    margin-right: 10px; /* تغییر حاشیه برای دکمه منو */
+}
+
+/* تنظیمات صفحه‌بندی */
+.pagination {
+    direction: rtl;
+}
+
+/* تنظیمات مودال */
+.modal-content {
+    text-align: right;
+}
+
+/* تنظیمات انتخاب‌گر نوع داده */
+.data-type-selector {
+    direction: rtl;
+}
+
+/* تنظیمات برای صفحه‌های کوچک */
+@media (max-width: 600px) {
+    .sidebar {
+        left: -85%; /* تنظیم برای صفحه‌های کوچک */
+    }
+    .sidebar.open {
+        left: 0;
+    }
+}

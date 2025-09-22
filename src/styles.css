@@ -57,10 +57,20 @@ body {
     background-attachment: fixed;
     background-position: center;
     overflow-x: hidden;
+    direction: rtl; /* اضافه شده برای پشتیبانی از فارسی */
 }
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+#container {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#container.visible {
+    opacity: 1;
 }
 
 .header {
@@ -80,7 +90,7 @@ body::-webkit-scrollbar {
 .header-tabs {
     display: flex;
     overflow-x: auto;
-    gap: 5px;
+    gap: 8px;
     flex: 1;
     scrollbar-width: none;
 }
@@ -90,21 +100,26 @@ body::-webkit-scrollbar {
 }
 
 .header-menu-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 0%;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border: none;
-    margin-left: 10px;
+    margin-left: 12px;
+    transition: background 0.2s ease;
+}
+
+.header-menu-button:hover {
+    background: var(--card-hover-background);
 }
 
 .header-menu-button svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     color: #fff;
 }
 
@@ -177,6 +192,11 @@ body::-webkit-scrollbar {
     color: var(--filter-active-text);
 }
 
+.sidebar-filter-button:hover,
+.filter-tab:hover {
+    transform: scale(1.05);
+}
+
 .sidebar-filters {
     margin-top: 15px;
 }
@@ -208,16 +228,16 @@ body::-webkit-scrollbar {
     border-radius: 0;
     font-size: 12px;
     cursor: pointer;
-    transition: 0.2s;
-    text-align: left;
+    transition: transform 0.2s ease, background 0.2s ease;
+    text-align: right;
     position: relative;
-    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .sidebar-filter-button::before {
     content: "";
     position: absolute;
-    left: 0;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     height: 60%;
@@ -364,7 +384,7 @@ body::-webkit-scrollbar {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid #000;
     padding: 5px;
-    border-radius: 0;
+    border-radius: 8px;
     max-width: 100%;
     scrollbar-width: none;
     background: rgba(0, 0, 0, 0.3);
@@ -388,7 +408,7 @@ body::-webkit-scrollbar {
 
 .pagination button:hover {
     background: var(--card-hover-background);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .pagination button.active {
@@ -457,10 +477,10 @@ body::-webkit-scrollbar {
     background: transparent;
     color: var(--text-color);
     border: none;
-    border-radius: 0;
+    border-radius: 8px;
     font-size: 12px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: transform 0.2s ease, background 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -485,7 +505,7 @@ body::-webkit-scrollbar {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s;
-    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .sidebar-submenu.open {
@@ -497,13 +517,13 @@ body::-webkit-scrollbar {
     color: #aaa;
     cursor: pointer;
     position: relative;
-    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .sidebar-submenu-item::before {
     content: "";
     position: absolute;
-    left: 0;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     height: 60%;
@@ -600,7 +620,7 @@ body::-webkit-scrollbar {
 
 .modal-content {
     padding: var(--spacing-large);
-    text-align: left;
+    text-align: right;
     border: none;
     max-width: 100%;
     max-height: 90vh;
@@ -611,7 +631,8 @@ body::-webkit-scrollbar {
     background: var(--card-background);
     border-radius: 12px;
     transform: scale(0.9);
-    transition: all var(--transition-speed) ease;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
 }
 
@@ -649,17 +670,21 @@ body::-webkit-scrollbar {
 }
 
 .modal-close {
-    margin-top: var(--spacing-medium);
+    margin-top: var(--spacing-large);
     padding: 8px 16px;
     border: none;
-    background: 0 0;
+    background: transparent;
     color: #999;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: var(--border-radius-large);
-    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    transition: background 0.3s ease, color 0.3s ease;
     width: 100%;
     user-select: none;
+}
+
+.modal-close:hover {
+    background: var(--card-hover-background);
 }
 
 .data-type-selector {
@@ -689,4 +714,17 @@ body::-webkit-scrollbar {
     background: var(--filter-active);
     color: var(--filter-active-text);
     transform: scale(1.02);
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--filter-active);
+    color: var(--filter-active-text);
+    padding: 10px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
 }

@@ -4,9 +4,9 @@ let filteredData = [];
 let currentPage = 0;
 const itemsPerPage = 100;
 let uniqueFilters = {
-     itemType: new Set(),
-     Rare: new Set(),
-     collectionType: new Set(),
+    itemType: new Set(),
+    Rare: new Set(),
+    collectionType: new Set(),
 };
 let lastClickedCard = null;
 let modalOpen = false;
@@ -17,608 +17,664 @@ let currentRarityFilter = "";
 let currentDataType = "items";
 
 const rarityDisplayNames = {
-     NONE: "COMMON",
-     WHITE: "COMMON",
-     BLUE: "RARE",
-     GREEN: "UNCOMMON",
-     ORANGE: "MYTHIC",
-     ORANGE_PLUS: "MYTHIC PLUS",
-     PURPLE: "EPIC",
-     PURPLE_PLUS: "EPIC PLUS",
-     Red: "ARTIFACT",
+    NONE: "معمولی",
+    WHITE: "معمولی",
+    BLUE: "نادر",
+    GREEN: "غیرمعمولی",
+    ORANGE: "افسانه‌ای",
+    ORANGE_PLUS: "افسانه‌ای پلاس",
+    PURPLE: "حماسی",
+    PURPLE_PLUS: "حماسی پلاس",
+    Red: "آرتیفکت",
 };
 
 const rarityCardImages = {
-     NONE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/COMMON.png",
-     WHITE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/COMMON.png",
-     BLUE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/RARE.png",
-     GREEN: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/UNCOMMON.png",
-     ORANGE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/MYTHIC.png",
-     ORANGE_PLUS: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/MYTHIC_PLUS.png",
-     PURPLE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/EPIC.png",
-     PURPLE_PLUS: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/EPIC_PLUS.png",
-     Red: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/ARTIFACT.png",
+    NONE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/COMMON.png",
+    WHITE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/COMMON.png",
+    BLUE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/RARE.png",
+    GREEN: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/UNCOMMON.png",
+    ORANGE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/MYTHIC.png",
+    ORANGE_PLUS: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/MYTHIC_PLUS.png",
+    PURPLE: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/EPIC.png",
+    PURPLE_PLUS: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/EPIC_PLUS.png",
+    Red: "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/card/ARTIFACT.png",
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-     setTimeout(() => {
-          const loadingDot = document.getElementById("loadingDot");
-          const container = document.getElementById("container");
-          if (loadingDot) loadingDot.style.display = "none";
-          if (container) container.style.display = "block";
-     }, 1000);
+    setTimeout(() => {
+        const loadingDot = document.getElementById("loadingDot");
+        const container = document.getElementById("container");
+        if (loadingDot) loadingDot.style.display = "none";
+        if (container) container.style.display = "block";
+    }, 1000);
 
-     fetchIcons();
-     fetchAssets();
+    fetchIcons();
+    fetchAssets();
 
-     const menuButton = document.getElementById("menuButton");
-     const sidebarClose = document.getElementById("sidebarClose");
-     const search = document.getElementById("search");
-     const modalBg = document.getElementById("modalBg");
-     const modalClose = document.getElementById("modalClose");
-     const itemsButton = document.getElementById("itemsButton");
-     const assetsButton = document.getElementById("assetsButton");
+    const menuButton = document.getElementById("menuButton");
+    const sidebarClose = document.getElementById("sidebarClose");
+    const search = document.getElementById("search");
+    const modalBg = document.getElementById("modalBg");
+    const modalClose = document.getElementById("modalClose");
+    const itemsButton = document.getElementById("itemsButton");
+    const assetsButton = document.getElementById("assetsButton");
 
-     if (menuButton) menuButton.addEventListener("click", toggleSidebar);
-     if (sidebarClose) sidebarClose.addEventListener("click", toggleSidebar);
-     if (search) search.addEventListener("input", filterIcons);
-     if (modalBg) modalBg.addEventListener("click", closeModal);
-     if (modalClose) modalClose.addEventListener("click", closeModal);
+    if (menuButton) menuButton.addEventListener("click", toggleSidebar);
+    if (sidebarClose) sidebarClose.addEventListener("click", toggleSidebar);
+    if (search) search.addEventListener("input", filterIcons);
+    if (modalBg) modalBg.addEventListener("click", closeModal);
+    if (modalClose) modalClose.addEventListener("click", closeModal);
 
-     if (itemsButton) itemsButton.addEventListener("click", () => switchDataType("items"));
-     if (assetsButton) assetsButton.addEventListener("click", () => switchDataType("assets"));
+    if (itemsButton) itemsButton.addEventListener("click", () => switchDataType("items"));
+    if (assetsButton) assetsButton.addEventListener("click", () => switchDataType("assets"));
 
-     const rarityMenu = document.getElementById("rarityMenu");
-     const sortMenu = document.getElementById("sortMenu");
-     const collectionsMenu = document.getElementById("collectionsMenu");
-     const typesMenu = document.getElementById("typesMenu");
+    const rarityMenu = document.getElementById("rarityMenu");
+    const sortMenu = document.getElementById("sortMenu");
+    const collectionsMenu = document.getElementById("collectionsMenu");
+    const typesMenu = document.getElementById("typesMenu");
 
-     if (rarityMenu) rarityMenu.addEventListener("click", () => toggleSubmenu("rarity"));
-     if (sortMenu) sortMenu.addEventListener("click", () => toggleSubmenu("sort"));
-     if (collectionsMenu) collectionsMenu.addEventListener("click", () => toggleSubmenu("collections"));
-     if (typesMenu) typesMenu.addEventListener("click", () => toggleSubmenu("types"));
+    if (rarityMenu) rarityMenu.addEventListener("click", () => toggleSubmenu("rarity"));
+    if (sortMenu) sortMenu.addEventListener("click", () => toggleSubmenu("sort"));
+    if (collectionsMenu) collectionsMenu.addEventListener("click", () => toggleSubmenu("collections"));
+    if (typesMenu) typesMenu.addEventListener("click", () => toggleSubmenu("types"));
 
-     window.addEventListener("load", () => {
-          if ("serviceWorker" in navigator) {
-               navigator.serviceWorker.register("sw.js").then(() => {
-                    console.log("Service Worker Registered");
-               });
-          }
+    window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js").then(() => {
+                console.log("سرویس‌ورکر ثبت شد");
+            });
+        }
 
-          let deferredPrompt;
-          window.addEventListener("beforeinstallprompt", (e) => {
-               e.preventDefault();
-               deferredPrompt = e;
-               setTimeout(() => {
-                    if (deferredPrompt) {
-                         deferredPrompt.prompt();
-                         deferredPrompt.userChoice.then(() => {
-                              deferredPrompt = null;
-                         });
-                    }
-               }, 3000);
-          });
-     });
+        let deferredPrompt;
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            setTimeout(() => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then(() => {
+                        deferredPrompt = null;
+                    });
+                }
+            }, 3000);
+        });
+    });
 });
 
 function toggleSubmenu(type) {
-     const menuItem = document.getElementById(`${type}Menu`);
-     const submenu = document.getElementById(`${type}Submenu`);
-     if (menuItem && submenu) {
-          menuItem.classList.toggle("active");
-          submenu.classList.toggle("open");
-     }
+    const menuItem = document.getElementById(`${type}Menu`);
+    const submenu = document.getElementById(`${type}Submenu`);
+    if (menuItem && submenu) {
+        menuItem.classList.toggle("active");
+        submenu.classList.toggle("open");
+    }
 }
 
 function toggleSidebar() {
-     const sidebar = document.getElementById("sidebar");
-     if (sidebar) {
-          sidebar.classList.toggle("open");
-     }
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) {
+        sidebar.classList.toggle("open");
+    }
 }
 
 function switchDataType(type) {
-     currentDataType = type;
+    currentDataType = type;
 
-     const itemsButton = document.getElementById("itemsButton");
-     const assetsButton = document.getElementById("assetsButton");
+    const itemsButton = document.getElementById("itemsButton");
+    const assetsButton = document.getElementById("assetsButton");
 
-     if (itemsButton && assetsButton) {
-          itemsButton.classList.toggle("active", type === "items");
-          assetsButton.classList.toggle("active", type === "assets");
-     }
+    if (itemsButton && assetsButton) {
+        itemsButton.classList.toggle("active", type === "items");
+        assetsButton.classList.toggle("active", type === "assets");
+    }
 
-     applyFilters();
+    applyFilters();
 }
 
 async function fetchIcons() {
-     try {
-          const response = await fetch("https://cdn.jsdelivr.net/gh/9112000/FFItems@30594bf/assets/itemData.json");
-          const data = await response.json();
+    try {
+        const response = await fetch("https://cdn.jsdelivr.net/gh/9112000/FFItems@30594bf/assets/itemData.json");
+        const data = await response.json();
 
-          iconsData = data.map((item) => ({
-               itemId: item["itemID"] || 0,
-               name: item["description"] || "Unknown",
-               iconName: item["icon"] || "Unknown",
-               description: item["description"] || "No description",
-               description2: item["description2"] || "No additional description",
-               itemType: item["itemType"] ? item["itemType"].replace(/_/g, " ") : "Unknown",
-               collectionType: item["collectionType"] ? item["collectionType"].replace(/_/g, " ") : "Unknown",
-               Rare: item["Rare"] || "NONE",
-               displayRarity: rarityDisplayNames[item["Rare"]] || item["Rare"] || "COMMON",
-               cardImageUrl: rarityCardImages[item["Rare"]] || "assets/images/card/COMMON.png",
-               iconUrl: `https://freefiremobile-a.akamaihd.net/common/Local/PK/FF_UI_Icon/${item["icon"]}.png`,
-               dataType: "item",
-          }));
+        iconsData = data.map((item) => ({
+            itemId: item["itemID"] || 0,
+            name: item["description"] || "ناشناخته",
+            iconName: item["icon"] || "ناشناخته",
+            description: item["description"] || "بدون توضیحات",
+            description2: item["description2"] || "بدون توضیحات اضافی",
+            itemType: item["itemType"] ? item["itemType"].replace(/_/g, " ") : "ناشناخته",
+            collectionType: item["collectionType"] ? item["collectionType"].replace(/_/g, " ") : "ناشناخته",
+            Rare: item["Rare"] || "NONE",
+            displayRarity: rarityDisplayNames[item["Rare"]] || item["Rare"] || "معمولی",
+            cardImageUrl: rarityCardImages[item["Rare"]] || "assets/images/card/COMMON.png",
+            iconUrl: `https://freefiremobile-a.akamaihd.net/common/Local/PK/FF_UI_Icon/${item["icon"]}.png`,
+            dataType: "item",
+        }));
 
-          iconsData.forEach((item) => {
-               if (item.itemType && item.itemType !== "Unknown") uniqueFilters.itemType.add(item.itemType);
-               if (item.displayRarity && item.displayRarity !== "COMMON") uniqueFilters.Rare.add(item.displayRarity);
-               if (item.collectionType && item.collectionType !== "Unknown") uniqueFilters.collectionType.add(item.collectionType);
-          });
+        iconsData.forEach((item) => {
+            if (item.itemType && item.itemType !== "ناشناخته") uniqueFilters.itemType.add(item.itemType);
+            if (item.displayRarity && item.displayRarity !== "معمولی") uniqueFilters.Rare.add(item.displayRarity);
+            if (item.collectionType && item.collectionType !== "ناشناخته") uniqueFilters.collectionType.add(item.collectionType);
+        });
 
-          populateFilterButtons("filter-Rare-buttons", uniqueFilters.Rare, "Rare");
-          populateFilterButtons("filter-sort-buttons", new Set(["ID", "Name", "Rarity"]), "sort");
-          populateFilterButtons("filter-collectionType-buttons", uniqueFilters.collectionType, "collectionType");
-          populateFilterButtons("filter-itemType-buttons", uniqueFilters.itemType, "itemType");
+        populateFilterButtons("filter-Rare-buttons", uniqueFilters.Rare, "Rare");
+        populateFilterButtons("filter-sort-buttons", new Set(["شناسه", "نام", "نادر بودن"]), "sort");
+        populateFilterButtons("filter-collectionType-buttons", uniqueFilters.collectionType, "collectionType");
+        populateFilterButtons("filter-itemType-buttons", uniqueFilters.itemType, "itemType");
 
-          populateFilterTabs();
+        populateFilterTabs();
 
-          filteredData = [...iconsData];
-          sortIcons();
-          renderIcons();
+        filteredData = [...iconsData];
+        sortIcons();
+        renderIcons();
 
-          const searchParams = new URLSearchParams(window.location.search);
-          const query = searchParams.get("q");
-          if (query) {
-               const searchInput = document.getElementById("search");
-               if (searchInput) {
-                    searchInput.value = query;
-                    filterIcons();
-               }
-          }
-     } catch (error) {
-          console.error("Failed to retrieve Icons:", error);
-          showError();
-     }
+        const searchParams = new URLSearchParams(window.location.search);
+        const query = searchParams.get("q");
+        if (query) {
+            const searchInput = document.getElementById("search");
+            if (searchInput) {
+                searchInput.value = query;
+                filterIcons();
+            }
+        }
+    } catch (error) {
+        console.error("خطا در دریافت آیکون‌ها:", error);
+        showError();
+    }
 }
 
 async function fetchAssets() {
-     try {
-          const response = await fetch("assets/assets.json");
-          const data = await response.json();
+    try {
+        const response = await fetch("assets/assets.json");
+        const data = await response.json();
 
-          assetsData = data.map((url) => ({
-               iconUrl: url,
-               name: url.split("/").pop().replace(".png", ""),
-               dataType: "asset",
-          }));
-     } catch (error) {
-          console.error("Failed to retrieve Assets:", error);
-     }
+        assetsData = data.map((url) => ({
+            iconUrl: url,
+            name: url.split("/").pop().replace(".png", ""),
+            dataType: "asset",
+        }));
+    } catch (error) {
+        console.error("خطا در دریافت دارایی‌ها:", error);
+    }
 }
 
 function populateFilterButtons(containerId, values, filterType) {
-     const container = document.getElementById(containerId);
-     if (!container) return;
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-     container.innerHTML = "";
+    container.innerHTML = "";
 
-     Array.from(values)
-          .sort()
-          .forEach((value) => {
-               if (!value) return;
+    Array.from(values)
+        .sort()
+        .forEach((value) => {
+            if (!value) return;
 
-               const button = document.createElement("button");
-               button.className = "sidebar-filter-button";
-               button.textContent = value;
-               button.dataset.filterType = filterType;
-               button.dataset.filterValue = value;
+            const button = document.createElement("button");
+            button.className = "sidebar-filter-button";
+            button.textContent = value;
+            button.dataset.filterType = filterType;
+            button.dataset.filterValue = value;
 
-               button.onclick = function () {
-                    const buttons = container.querySelectorAll(".sidebar-filter-button");
+            button.onclick = function () {
+                const buttons = container.querySelectorAll(".sidebar-filter-button");
+                buttons.forEach((btn) => btn.classList.remove("active"));
+
+                if (filterType === "sort") {
+                    button.classList.add("active");
+                    currentSort = value.toLowerCase();
+                    sortIcons();
+                    renderIcons();
+                } else {
+                    const isActive = button.classList.contains("active");
                     buttons.forEach((btn) => btn.classList.remove("active"));
 
-                    if (filterType === "sort") {
-                         button.classList.add("active");
-                         currentSort = value.toLowerCase();
-                         sortIcons();
-                         renderIcons();
+                    if (!isActive) {
+                        button.classList.add("active");
+
+                        if (filterType === "Rare") {
+                            currentRarityFilter = value;
+                        } else if (filterType === "collectionType") {
+                            currentCollectionFilter = value;
+                        } else if (filterType === "itemType") {
+                            currentTypeFilter = value;
+                        }
                     } else {
-                         const isActive = button.classList.contains("active");
-                         buttons.forEach((btn) => btn.classList.remove("active"));
-
-                         if (!isActive) {
-                              button.classList.add("active");
-
-                              if (filterType === "Rare") {
-                                   currentRarityFilter = value;
-                              } else if (filterType === "collectionType") {
-                                   currentCollectionFilter = value;
-                              } else if (filterType === "itemType") {
-                                   currentTypeFilter = value;
-                              }
-                         } else {
-                              if (filterType === "Rare") {
-                                   currentRarityFilter = "";
-                              } else if (filterType === "collectionType") {
-                                   currentCollectionFilter = "";
-                              } else if (filterType === "itemType") {
-                                   currentTypeFilter = "";
-                              }
-                         }
-
-                         applyFilters();
+                        if (filterType === "Rare") {
+                            currentRarityFilter = "";
+                        } else if (filterType === "collectionType") {
+                            currentCollectionFilter = "";
+                        } else if (filterType === "itemType") {
+                            currentTypeFilter = "";
+                        }
                     }
-               };
 
-               if (filterType === "sort" && value.toLowerCase() === currentSort) {
-                    button.classList.add("active");
-               }
+                    applyFilters();
+                }
+            };
 
-               container.appendChild(button);
-          });
+            if (filterType === "sort" && value.toLowerCase() === currentSort) {
+                button.classList.add("active");
+            }
+
+            container.appendChild(button);
+        });
 }
 
 function populateFilterTabs() {
-     const filterTabs = document.getElementById("headerTabs");
-     if (!filterTabs) return;
+    const filterTabs = document.getElementById("headerTabs");
+    if (!filterTabs) return;
 
-     filterTabs.innerHTML = "";
+    filterTabs.innerHTML = "";
 
-     const allTab = document.createElement("button");
-     allTab.className = "filter-tab active";
-     allTab.textContent = "ALL";
-     allTab.onclick = () => {
-          currentTypeFilter = "";
-          currentCollectionFilter = "";
-          currentRarityFilter = "";
+    const allTab = document.createElement("button");
+    allTab.className = "filter-tab active";
+    allTab.textContent = "همه";
+    allTab.onclick = () => {
+        currentTypeFilter = "";
+        currentCollectionFilter = "";
+        currentRarityFilter = "";
 
-          document.querySelectorAll(".filter-tab").forEach((tab) => tab.classList.remove("active"));
-          allTab.classList.add("active");
+        document.querySelectorAll(".filter-tab").forEach((tab) => tab.classList.remove("active"));
+        allTab.classList.add("active");
 
-          document.querySelectorAll(".sidebar-filter-button").forEach((btn) => {
-               if (btn.dataset.filterType !== "sort") {
-                    btn.classList.remove("active");
-               }
-          });
+        document.querySelectorAll(".sidebar-filter-button").forEach((btn) => {
+            if (btn.dataset.filterType !== "sort") {
+                btn.classList.remove("active");
+            }
+        });
 
-          applyFilters();
-     };
-     filterTabs.appendChild(allTab);
+        applyFilters();
+    };
+    filterTabs.appendChild(allTab);
 
-     Array.from(uniqueFilters.itemType)
-          .sort()
-          .forEach((type) => {
-               if (!type) return;
-               const tab = document.createElement("button");
-               tab.className = "filter-tab";
-               tab.textContent = type;
-               tab.onclick = () => {
-                    currentTypeFilter = type;
-                    currentCollectionFilter = "";
-                    currentRarityFilter = "";
+    Array.from(uniqueFilters.itemType)
+        .sort()
+        .forEach((type) => {
+            if (!type) return;
+            const tab = document.createElement("button");
+            tab.className = "filter-tab";
+            tab.textContent = type;
+            tab.onclick = () => {
+                currentTypeFilter = type;
+                currentCollectionFilter = "";
+                currentRarityFilter = "";
 
-                    document.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
-                    tab.classList.add("active");
+                document.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
+                tab.classList.add("active");
 
-                    document.querySelectorAll(".sidebar-filter-button").forEach((btn) => {
-                         if (btn.dataset.filterType !== "sort") {
-                              btn.classList.remove("active");
-                         }
-                    });
+                document.querySelectorAll(".sidebar-filter-button").forEach((btn) => {
+                    if (btn.dataset.filterType !== "sort") {
+                        btn.classList.remove("active");
+                    }
+                });
 
-                    const typeButton = document.querySelector(`.sidebar-filter-button[data-filter-value="${type}"]`);
-                    if (typeButton) typeButton.classList.add("active");
+                const typeButton = document.querySelector(`.sidebar-filter-button[data-filter-value="${type}"]`);
+                if (typeButton) typeButton.classList.add("active");
 
-                    applyFilters();
-               };
-               filterTabs.appendChild(tab);
-          });
+                applyFilters();
+            };
+            filterTabs.appendChild(tab);
+        });
 
-     Array.from(uniqueFilters.collectionType)
-          .sort()
-          .forEach((collection) => {
-               if (!collection) return;
-               const tab = document.createElement("button");
-               tab.className = "filter-tab";
-               tab.textContent = collection;
-               tab.onclick = () => {
-                    currentCollectionFilter = collection;
-                    currentTypeFilter = "";
-                    currentRarityFilter = "";
+    Array.from(uniqueFilters.collectionType)
+        .sort()
+        .forEach((collection) => {
+            if (!collection) return;
+            const tab = document.createElement("button");
+            tab.className = "filter-tab";
+            tab.textContent = collection;
+            tab.onclick = () => {
+                currentCollectionFilter = collection;
+                currentTypeFilter = "";
+                currentRarityFilter = "";
 
-                    document.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
-                    tab.classList.add("active");
+                document.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
+                tab.classList.add("active");
 
-                    document.querySelectorAll(".sidebar-filter-button").forEach((btn) => {
-                         if (btn.dataset.filterType !== "sort") {
-                              btn.classList.remove("active");
-                         }
-                    });
+                document.querySelectorAll(".sidebar-filter-button").forEach((btn) => {
+                    if (btn.dataset.filterType !== "sort") {
+                        btn.classList.remove("active");
+                    }
+                });
 
-                    const collectionButton = document.querySelector(`.sidebar-filter-button[data-filter-value="${collection}"]`);
-                    if (collectionButton) collectionButton.classList.add("active");
+                const collectionButton = document.querySelector(`.sidebar-filter-button[data-filter-value="${collection}"]`);
+                if (collectionButton) collectionButton.classList.add("active");
 
-                    applyFilters();
-               };
-               filterTabs.appendChild(tab);
-          });
+                applyFilters();
+            };
+            filterTabs.appendChild(tab);
+        });
 }
 
 function showError() {
-     const grid = document.getElementById("iconGrid");
-     if (grid) {
-          grid.innerHTML = `<div class="no-results">Failed to load items. Please try again later.</div>`;
-     }
+    const grid = document.getElementById("iconGrid");
+    if (grid) {
+        grid.innerHTML = `<div class="no-results">بارگذاری آیتم‌ها با خطا مواجه شد. لطفاً بعداً دوباره امتحان کنید.</div>`;
+    }
 }
 
 function applyFilters() {
-     const searchInput = document.getElementById("search");
-     const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
+    const searchInput = document.getElementById("search");
+    const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
 
-     if (currentDataType === "items") {
-          filteredData = iconsData.filter((item) => {
-               const itemName = item.name || "";
-               const itemId = item.itemId || "";
-               const iconName = item.iconName || "";
+    if (currentDataType === "items") {
+        filteredData = iconsData.filter((item) => {
+            const itemName = item.name || "";
+            const itemId = item.itemId || "";
+            const iconName = item.iconName || "";
 
-               const matchesSearch = searchQuery === "" || itemName.toString().toLowerCase().includes(searchQuery) || itemId.toString().includes(searchQuery) || iconName.toLowerCase().includes(searchQuery);
+            const matchesSearch = searchQuery === "" || itemName.toString().toLowerCase().includes(searchQuery) || itemId.toString().includes(searchQuery) || iconName.toLowerCase().includes(searchQuery);
 
-               const matchesType = !currentTypeFilter || item.itemType === currentTypeFilter;
-               const matchesRare = !currentRarityFilter || item.displayRarity === currentRarityFilter;
-               const matchesCollection = !currentCollectionFilter || item.collectionType === currentCollectionFilter;
+            const matchesType = !currentTypeFilter || item.itemType === currentTypeFilter;
+            const matchesRare = !currentRarityFilter || item.displayRarity === currentRarityFilter;
+            const matchesCollection = !currentCollectionFilter || item.collectionType === currentCollectionFilter;
 
-               return matchesSearch && matchesType && matchesRare && matchesCollection;
-          });
+            return matchesSearch && matchesType && matchesRare && matchesCollection;
+        });
 
-          sortIcons();
-     } else {
-          filteredData = assetsData.filter((asset) => {
-               const assetName = asset.name || "";
-               return searchQuery === "" || assetName.toLowerCase().includes(searchQuery);
-          });
-     }
+        sortIcons();
+    } else {
+        filteredData = assetsData.filter((asset) => {
+            const assetName = asset.name || "";
+            return searchQuery === "" || assetName.toLowerCase().includes(searchQuery);
+        });
+    }
 
-     currentPage = 0;
-     renderIcons();
+    currentPage = 0;
+    renderIcons();
 }
 
 function sortIcons() {
-     if (currentSort === "name") {
-          filteredData.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
-     } else if (currentSort === "id") {
-          filteredData.sort((a, b) => (a.itemId || 0) - (b.itemId || 0));
-     } else if (currentSort === "rarity") {
-          const rarityOrder = {
-               COMMON: 1,
-               UNCOMMON: 2,
-               RARE: 3,
-               EPIC: 4,
-               "EPIC PLUS": 5,
-               MYTHIC: 6,
-               "MYTHIC PLUS": 7,
-               ARTIFACT: 8,
-          };
+    if (currentSort === "نام") {
+        filteredData.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+    } else if (currentSort === "شناسه") {
+        filteredData.sort((a, b) => (a.itemId || 0) - (b.itemId || 0));
+    } else if (currentSort === "نادر بودن") {
+        const rarityOrder = {
+            معمولی: 1,
+            غیرمعمولی: 2,
+            نادر: 3,
+            حماسی: 4,
+            "حماسی پلاس": 5,
+            افسانه‌ای: 6,
+            "افسانه‌ای پلاس": 7,
+            آرتیفکت: 8,
+        };
 
-          filteredData.sort((a, b) => {
-               const aRarity = rarityOrder[a.displayRarity] || 0;
-               const bRarity = rarityOrder[b.displayRarity] || 0;
-               return bRarity - aRarity || (a.itemId || 0) - (b.itemId || 0);
-          });
-     }
+        filteredData.sort((a, b) => {
+            const aRarity = rarityOrder[a.displayRarity] || 0;
+            const bRarity = rarityOrder[b.displayRarity] || 0;
+            return bRarity - aRarity || (a.itemId || 0) - (b.itemId || 0);
+        });
+    }
 }
 
 function renderIcons() {
-     const grid = document.getElementById("iconGrid");
-     if (!grid) return;
+    const grid = document.getElementById("iconGrid");
+    if (!grid) return;
 
-     const start = currentPage * itemsPerPage;
-     const end = start + itemsPerPage;
-     const visibleIcons = filteredData.slice(start, end);
+    const start = currentPage * itemsPerPage;
+    const end = start + itemsPerPage;
+    const visibleIcons = filteredData.slice(start, end);
 
-     grid.innerHTML = "";
+    grid.innerHTML = "";
 
-     if (filteredData.length === 0) {
-          grid.innerHTML = `<div class="no-results">No items found matching your criteria</div>`;
-          const paginationDiv = document.getElementById("pagination");
-          if (paginationDiv) paginationDiv.innerHTML = "";
-          return;
-     }
+    if (filteredData.length === 0) {
+        grid.innerHTML = `<div class="no-results">هیچ آیتمی با معیارهای شما یافت نشد</div>`;
+        const paginationDiv = document.getElementById("pagination");
+        if (paginationDiv) paginationDiv.innerHTML = "";
+        return;
+    }
 
-     visibleIcons.forEach((icon, index) => {
-          const card = document.createElement("div");
-          card.className = "icon-card";
-          card.dataset.index = start + index;
-          card.onclick = (e) => {
-               document.querySelectorAll(".icon-card").forEach((c) => {
-                    c.classList.remove("active");
-               });
-               card.classList.add("active");
-               lastClickedCard = card;
-               showModal(icon);
-          };
+    visibleIcons.forEach((icon, index) => {
+        const card = document.createElement("div");
+        card.className = "icon-card";
+        card.dataset.index = start + index;
+        card.onclick = (e) => {
+            console.log("کارت کلیک‌شده:", icon); // لاگ برای دیباگ
+            document.querySelectorAll(".icon-card").forEach((c) => {
+                c.classList.remove("active");
+            });
+            card.classList.add("active");
+            lastClickedCard = card;
+            showModal(icon);
+        };
 
-          const cardContainer = document.createElement("div");
-          cardContainer.style.position = "relative";
-          cardContainer.style.width = "100%";
-          cardContainer.style.height = "100%";
+        const cardContainer = document.createElement("div");
+        cardContainer.style.position = "relative";
+        cardContainer.style.width = "100%";
+        cardContainer.style.height = "100%";
 
-          if (currentDataType === "items") {
-               const cardBg = document.createElement("img");
-               cardBg.src = icon.cardImageUrl;
-               cardBg.alt = icon.name + " card background";
-               cardBg.className = "card-bg";
-               cardBg.onerror = () => {
-                    cardBg.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
-               };
+        if (currentDataType === "items") {
+            const cardBg = document.createElement("img");
+            cardBg.src = icon.cardImageUrl;
+            cardBg.alt = icon.name + " پس‌زمینه کارت";
+            cardBg.className = "card-bg";
+            cardBg.onerror = () => {
+                cardBg.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
+            };
 
-               const cardIcon = document.createElement("img");
-               cardIcon.src = icon.iconUrl;
-               cardIcon.alt = icon.name;
-               cardIcon.className = "card-icon";
-               cardIcon.onerror = () => {
-                    cardIcon.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
-               };
+            const cardIcon = document.createElement("img");
+            cardIcon.src = icon.iconUrl;
+            cardIcon.alt = icon.name;
+            cardIcon.className = "card-icon";
+            cardIcon.onerror = () => {
+                cardIcon.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
+            };
 
-               cardContainer.appendChild(cardBg);
-               cardContainer.appendChild(cardIcon);
-          } else {
-               const cardIcon = document.createElement("img");
-               cardIcon.src = icon.iconUrl;
-               cardIcon.alt = icon.name;
-               cardIcon.className = "card-icon";
-               cardIcon.style.position = "absolute";
-               cardIcon.style.top = "50%";
-               cardIcon.style.left = "50%";
-               cardIcon.style.transform = "translate(-50%, -50%)";
-               cardIcon.style.maxWidth = "80%";
-               cardIcon.style.maxHeight = "80%";
-               cardIcon.onerror = () => {
-                    cardIcon.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
-               };
+            cardContainer.appendChild(cardBg);
+            cardContainer.appendChild(cardIcon);
+        } else {
+            const cardIcon = document.createElement("img");
+            cardIcon.src = icon.iconUrl;
+            cardIcon.alt = icon.name;
+            cardIcon.className = "card-icon";
+            cardIcon.style.position = "absolute";
+            cardIcon.style.top = "50%";
+            cardIcon.style.left = "50%";
+            cardIcon.style.transform = "translate(-50%, -50%)";
+            cardIcon.style.maxWidth = "80%";
+            cardIcon.style.maxHeight = "80%";
+            cardIcon.onerror = () => {
+                cardIcon.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
+            };
 
-               cardContainer.appendChild(cardIcon);
-          }
+            cardContainer.appendChild(cardIcon);
+        }
 
-          card.appendChild(cardContainer);
-          grid.appendChild(card);
-     });
+        card.appendChild(cardContainer);
+        grid.appendChild(card);
+    });
 
-     updatePagination();
+    updatePagination();
 }
 
 function updatePagination() {
-     const paginationDiv = document.getElementById("pagination");
-     if (!paginationDiv) return;
+    const paginationDiv = document.getElementById("pagination");
+    if (!paginationDiv) return;
 
-     const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-     paginationDiv.innerHTML = "";
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    paginationDiv.innerHTML = "";
 
-     for (let i = 0; i < totalPages; i++) {
-          const button = document.createElement("button");
-          button.textContent = i + 1;
-          button.classList.toggle("active", i === currentPage);
-          button.onclick = () => changePage(i);
-          paginationDiv.appendChild(button);
-     }
+    for (let i = 0; i < totalPages; i++) {
+        const button = document.createElement("button");
+        button.textContent = i + 1;
+        button.classList.toggle("active", i === currentPage);
+        button.onclick = () => changePage(i);
+        paginationDiv.appendChild(button);
+    }
 }
 
 function changePage(page) {
-     currentPage = page;
-     renderIcons();
-     window.scrollTo({ top: 0, behavior: "smooth" });
+    currentPage = page;
+    renderIcons();
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function filterIcons() {
-     applyFilters();
+    applyFilters();
 }
 
 function showModal(item) {
-     const modal = document.getElementById("modal");
-     const modalImage = document.getElementById("modalImage");
-     const modalDescription = document.getElementById("modalDescription");
-     const modalDescription2 = document.getElementById("modalDescription2");
-     const modalItemId = document.getElementById("modalItemId");
-     const modalIconName = document.getElementById("modalIconName");
-     const modalType = document.getElementById("modalType");
-     const modalRare = document.getElementById("modalRare");
+    const modal = document.getElementById("modal");
+    const modalImage = document.getElementById("modalImage");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalDescription2 = document.getElementById("modalDescription2");
+    const modalItemId = document.getElementById("modalItemId");
+    const modalIconName = document.getElementById("modalIconName");
+    const modalType = document.getElementById("modalType");
+    const modalRare = document.getElementById("modalRare");
 
-     if (modal && modalImage) {
-          modalImage.src = item.iconUrl;
-          modalImage.onerror = () => {
-               modalImage.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
-          };
+    // بررسی وجود المان‌های مودال
+if (!modal || !modalImage || !modalDescription || !modalDescription2 || !modalItemId || !modalIconName || !modalType || !modalRare) {
+        console.error("یکی از المان‌های مودال پیدا نشد!", {
+            modal, modalImage, modalDescription, modalDescription2, modalItemId, modalIconName, modalType, modalRare
+        });
+        return;
+    }
 
-          if (item.dataType === "item") {
-               if (modalDescription) modalDescription.textContent = item.name || "Unknown";
-               if (modalDescription2) {
-                    const description = item.description2 || item.description || "No description";
-                    modalDescription2.textContent = description === "No description" || description === "NONE" ? "No description provided" : description;
-               }
-               if (modalItemId) modalItemId.textContent = item.itemId || "Unknown";
-               if (modalIconName) modalIconName.textContent = item.iconName || "Unknown";
-               if (modalType) modalType.textContent = item.itemType || "Unknown";
-               if (modalRare) modalRare.textContent = item.displayRarity || "Unknown";
-               document.querySelectorAll("#modalDescription2, #modalItemId, #modalType, #modalRare").forEach((el) => {
-                    el.style.display = "";
-               });
-               document.querySelectorAll(".divider").forEach((el) => {
-                    el.style.display = "";
-               });
-          } else {
-               if (modalDescription) modalDescription.textContent = "";
-               if (modalDescription2) modalDescription2.textContent = "";
-               if (modalItemId) modalItemId.textContent = "Unavailable in assets mode.";
-               if (modalIconName) modalIconName.textContent = item.name || "Unknown";
-               if (modalType) modalType.textContent = "";
-               if (modalRare) modalRare.textContent = "";
+    // بررسی داده‌های ورودی
+    if (!item || !item.iconUrl) {
+        console.error("داده‌های کارت نامعتبر است:", item);
+        return;
+    }
 
-               document.querySelectorAll("#modalDescription2, #item.description, #modalType, #modalRare").forEach((el) => {
-                    el.style.display = "none";
-               });
-               document.querySelectorAll(".divider").forEach((el) => {
-                    el.style.display = "none";
-               });
-          }
+    // ریست مودال قبل از نمایش
+    modalImage.src = "";
+    modalDescription.textContent = "";
+    modalDescription2.textContent = "";
+    modalItemId.textContent = "";
+    modalIconName.textContent = "";
+    modalType.textContent = "";
+    modalRare.textContent = "";
+    document.querySelectorAll("#modalDescription2, #modalDescription, #modalType, #modalRare").forEach((el) => {
+        el.style.display = "none";
+    });
+    document.querySelectorAll(".divider").forEach((el) => {
+        el.style.display = "none";
+    });
 
-          modal.classList.add("show");
-     }
+    modalImage.src = item.iconUrl;
+    modalImage.onerror = () => {
+        modalImage.src = "https://cdn.jsdelivr.net/gh/9112000/FFItems@master/assets/images/error-404.png";
+    };
+
+    if (item.dataType === "item") {
+        modalDescription.textContent = item.name || "ناشناخته";
+        const description = item.description2 || item.description || "بدون توضیحات";
+        modalDescription2.textContent = description === "بدون توضیحات" || description === "NONE" ? "هیچ توضیحی ارائه نشده" : description;
+        modalItemId.textContent = item.itemId || "ناشناخته";
+        modalIconName.textContent = item.iconName || "ناشناخته";
+        modalType.textContent = item.itemType || "ناشناخته";
+        modalRare.textContent = item.displayRarity || "ناشناخته";
+
+        document.querySelectorAll("#modalDescription2, #modalDescription, #modalType, #modalRare").forEach((el) => {
+            el.style.display = "";
+        });
+        document.querySelectorAll(".divider").forEach((el) => {
+            el.style.display = "";
+        });
+    } else {
+        modalDescription.textContent = item.name || "ناشناخته";
+        modalDescription2.textContent = "بدون توضیحات اضافی";
+        modalItemId.textContent = "شناسه در دسترس نیست";
+        modalIconName.textContent = item.name || "ناشناخته";
+        modalType.textContent = "نوع در دسترس نیست";
+        modalRare.textContent = "نادر بودن در دسترس نیست";
+
+        document.querySelectorAll("#modalDescription2, #modalDescription, #modalType, #modalRare").forEach((el) => {
+            el.style.display = "";
+        });
+        document.querySelectorAll(".divider").forEach((el) => {
+            el.style.display = "";
+        });
+    }
+
+    modal.classList.add("show");
+    modalOpen = true;
+    console.log("مودال نمایش داده شد:", item); // لاگ برای دیباگ
 }
 
 function closeModal() {
-     const modal = document.getElementById("modal");
-     if (modal) {
-          modal.classList.remove("show");
-     }
+    const modal = document.getElementById("modal");
+    if (modal) {
+        modal.classList.remove("show");
+        modalOpen = false;
+
+        // ریست محتوای مودال
+        const modalImage = document.getElementById("modalImage");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalDescription2 = document.getElementById("modalDescription2");
+        const modalItemId = document.getElementById("modalItemId");
+        const modalIconName = document.getElementById("modalIconName");
+        const modalType = document.getElementById("modalType");
+        const modalRare = document.getElementById("modalRare");
+
+        if (modalImage) modalImage.src = "";
+        if (modalDescription) modalDescription.textContent = "";
+        if (modalDescription2) modalDescription2.textContent = "";
+        if (modalItemId) modalItemId.textContent = "";
+        if (modalIconName) modalIconName.textContent = "";
+        if (modalType) modalType.textContent = "";
+        if (modalRare) modalRare.textContent = "";
+
+        document.querySelectorAll("#modalDescription2, #modalDescription, #modalType, #modalRare").forEach((el) => {
+            el.style.display = "none";
+        });
+        document.querySelectorAll(".divider").forEach((el) => {
+            el.style.display = "none";
+        });
+
+        console.log("مودال بسته شد"); // لاگ برای دیباگ
+    }
 }
 
 function copyToClipboard(text, type) {
-     if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard
-               .writeText(text)
-               .then(() => {
-                    showCopyNotification(type);
-               })
-               .catch((err) => {
-                    console.error("Failed to copy: ", err);
-                    fallbackCopyToClipboard(text, type);
-               });
-     } else {
-          fallbackCopyToClipboard(text, type);
-     }
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard
+            .writeText(text)
+            .then(() => {
+                showCopyNotification(type);
+            })
+            .catch((err) => {
+                console.error("خطا در کپی کردن: ", err);
+                fallbackCopyToClipboard(text, type);
+            });
+    } else {
+        fallbackCopyToClipboard(text, type);
+    }
 }
 
 function fallbackCopyToClipboard(text, type) {
-     const textArea = document.createElement("textarea");
-     textArea.value = text;
-     textArea.style.position = "fixed";
-     textArea.style.opacity = 0;
-     document.body.appendChild(textArea);
-     textArea.focus();
-     textArea.select();
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.opacity = 0;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
 
-     try {
-          const successful = document.execCommand("copy");
-          if (successful) {
-               showCopyNotification(type);
-          }
-     } catch (err) {
-          console.error("Fallback copy failed: ", err);
-     }
+    try {
+        const successful = document.execCommand("copy");
+        if (successful) {
+            showCopyNotification(type);
+        }
+    } catch (err) {
+        console.error("خطا در کپی کردن: ", err);
+    }
 
-     document.body.removeChild(textArea);
+    document.body.removeChild(textArea);
 }
 
 function showCopyNotification(type) {
-     alert(`${type} copied to clipboard!`);
+    alert(`${type} در کلیپ‌بورد کپی شد!`);
 }
 
 if ("serviceWorker" in navigator) {
-     window.addEventListener("load", () => {
-          navigator.serviceWorker
-               .register("sw.js")
-               .then((reg) => console.log("Service worker registered", reg))
-               .catch((err) => console.error("Service worker registration failed", err));
-     });
+    window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("sw.js")
+            .then((reg) => console.log("سرویس‌ورکر ثبت شد", reg))
+            .catch((err) => console.error("خطا در ثبت سرویس‌ورکر", err));
+    });
 }

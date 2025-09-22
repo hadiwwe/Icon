@@ -17,15 +17,15 @@ let currentRarityFilter = "";
 let currentDataType = "items";
 
 const rarityDisplayNames = {
-     NONE: "معمولی ",
-     WHITE: "معمولی ",
-     BLUE: "کمیاب",
-     GREEN: "نادر",
-     ORANGE: "متیک",
-     ORANGE_PLUS: "متیک پلاس",
-     PURPLE: "اپیک",
-     PURPLE_PLUS: "اپیکس پلاس",
-     Red: "آرتیفکت",
+     NONE: "COMMON",
+     WHITE: "COMMON",
+     BLUE: "RARE",
+     GREEN: "UNCOMMON",
+     ORANGE: "MYTHIC",
+     ORANGE_PLUS: "MYTHIC PLUS",
+     PURPLE: "EPIC",
+     PURPLE_PLUS: "EPIC PLUS",
+     Red: "ARTIFACT",
 };
 
 const rarityCardImages = {
@@ -138,10 +138,10 @@ async function fetchIcons() {
 
           iconsData = data.map((item) => ({
                itemId: item["itemID"] || 0,
-               name: item["description"] || "نامشخص",
-               iconName: item["icon"] || "نامشخص",
-               description: item["description"] || "بدون توضیحات",
-               description2: item["description2"] || "توضیحات اضافه ندارد",
+               name: item["description"] || "Unknown",
+               iconName: item["icon"] || "Unknown",
+               description: item["description"] || "No description",
+               description2: item["description2"] || "No additional description",
                itemType: item["itemType"] ? item["itemType"].replace(/_/g, " ") : "Unknown",
                collectionType: item["collectionType"] ? item["collectionType"].replace(/_/g, " ") : "Unknown",
                Rare: item["Rare"] || "NONE",
